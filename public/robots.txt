@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://procelyx.cz/sitemap.xml

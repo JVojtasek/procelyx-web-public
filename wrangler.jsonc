@@ -1,0 +1,63 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "procelyx-web",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-23",
+  "workers_dev": true,
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false
+    }
+  },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "procelyx.cz",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.procelyx.cz",
+      "custom_domain": true
+    }
+  ],
+  // Runs before every deploy and every `wrangler dev` rebuild: npm run build, then tests and link checks
+  // (a broken link or test stops the release). Only PROCELYX_SKIP_GATE=1 skips the gate: npm run dev and
+  // the web-checks dry run (see tools/wrangler-build.mjs).
+  "build": {
+    "command": "node tools/wrangler-build.mjs"
+  },
+  "vars": {
+    "CONTACT_PROVIDER": "google",
+    "CONTACT_TO": "jarda.vojtasek@procelyx.cz",
+    "CONTACT_FROM": "PROCELYX Web <web@procelyx.cz>",
+    "CONTACT_ENABLED": "true",
+    // Nexus One forwarding (see ADMIN_RUNBOOK.md "Napojení na Nexus One"). Stays "false" until
+    // the secret NEXUS_INBOUND_SECRET is set with "npx wrangler secret put NEXUS_INBOUND_SECRET"
+    // (never put the secret into this file).
+    "NEXUS_ENABLED": "true",
+    "NEXUS_INBOUND_URL": "https://nexus-one-production.up.railway.app/api/public/v1/inbound",
+    "NEXUS_WEBSITE_KEY": "ws_003zjkoqhgvk63oyit9zgqw5"
+  },
+  // Retries inquiries queued while Nexus One was unavailable (no-op while NEXUS_ENABLED is "false").
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+  // Outbox for inquiries that could not be delivered to Nexus One yet (namespace procelyx-web-nexus-queue).
+  "kv_namespaces": [{ "binding": "NEXUS_QUEUE", "id": "28aa20598d7846dfab427f178589a5f0" }],
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "2026092301",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ]
+}

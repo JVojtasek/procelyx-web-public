@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://procelyx.cz/schemas/media.schema.json",
+  "title": "content/media.json — which library image each image slot shows",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^[A-Za-z][A-Za-z0-9]{0,40}$": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mediaId"],
+      "properties": { "mediaId": { "type": "string", "pattern": "^img-[a-z0-9-]{1,160}$" } }
+    }
+  }
+}

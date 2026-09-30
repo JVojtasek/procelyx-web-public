@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://procelyx.cz/schemas/site.schema.json",
+  "title": "content/site.json — identity and SEO of the website",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["email", "phone", "founderName", "founderTitle", "seoTitle", "seoDescription", "ogImage", "chatDemoEnabled", "businessId", "businessSeat"],
+  "properties": {
+    "email": { "type": "string", "pattern": "^[^\\s@<>]+@[^\\s@<>]+\\.[^\\s@<>]+$", "maxLength": 120 },
+    "phone": { "type": "string", "pattern": "^\\+[0-9 ]{8,20}$" },
+    "founderName": { "type": "string", "minLength": 3, "maxLength": 80, "pattern": "^[^<>]+$" },
+    "founderTitle": { "$ref": "#/$defs/localized" },
+    "seoTitle": { "$ref": "#/$defs/localized" },
+    "seoDescription": { "$ref": "#/$defs/localized" },
+    "ogImage": { "type": "string", "pattern": "^/images/[A-Za-z0-9/_.-]+\\.(jpg|jpeg|png|webp)$" },
+    "chatDemoEnabled": { "type": "boolean" },
+    "businessId": { "type": "string", "pattern": "^[0-9]{8}$" },
+    "businessSeat": { "type": "string", "maxLength": 200, "pattern": "^[^<>]*$" }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cs", "en"],
+      "properties": {
+        "cs": { "type": "string", "minLength": 1, "maxLength": 300, "pattern": "^[^<>]*$" },
+        "en": { "type": "string", "minLength": 1, "maxLength": 300, "pattern": "^[^<>]*$" }
+      }
+    }
+  }
+}

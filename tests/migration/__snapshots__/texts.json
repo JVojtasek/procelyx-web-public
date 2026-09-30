@@ -1,0 +1,1242 @@
+{
+  "cs": {
+    "lang": "cs",
+    "title": "PROCELYX — AI automatizace a digitální procesy pro firmy",
+    "description": "Méně přepisování, rychlejší předávání práce a přehled o zakázkách. PROCELYX propojuje vaše systémy a zavádí AI automatizaci od jednoho měřitelného pilotu.",
+    "dataT": {
+      "nav1": [
+        "Co automatizujeme",
+        "Co automatizujeme"
+      ],
+      "nav2": [
+        "Jak pracujeme",
+        "Jak pracujeme"
+      ],
+      "nav3": [
+        "Projekty",
+        "Projekty"
+      ],
+      "nav7": [
+        "Články",
+        "Články"
+      ],
+      "nav4": [
+        "O mně",
+        "O mně"
+      ],
+      "nav5": [
+        "Kontakt",
+        "Kontakt"
+      ],
+      "navcta": [
+        "Najít, kde ztrácíme čas"
+      ],
+      "nav6": [
+        "Příklady z praxe"
+      ],
+      "h1": [
+        "Není čas ztrácet čas."
+      ],
+      "lead": [
+        "Vaši lidé mají na víc než práci, která je zbytečně zdržuje. Hledání podkladů, čekání na informace, hlídání úkolů. Propojíme vaše systémy a zautomatizujeme opakující se práci. Získáte čas na to podstatné."
+      ],
+      "cta2": [
+        "Najít, kde ztrácíme čas"
+      ],
+      "heroExample": [
+        "Prohlédnout příklad"
+      ],
+      "heroReassure": [
+        "Nemusíte znát řešení. Stačí popsat, co vás zdržuje."
+      ],
+      "heroExperience": [
+        "20 let obchodní a konzultační praxe. Digitální technologie v reálném provozu."
+      ],
+      "auditEyebrow": [
+        "ZAČNĚTE TAM, KDE TO DÁVÁ SMYSL"
+      ],
+      "auditTitle": [
+        "Nejdřív pochopit. Potom automatizovat."
+      ],
+      "auditText": [
+        "Nejrychlejší cesta k plynulejším zakázkám nezačíná dalším softwarem. Začíná tím, že uvidíte, kde dnes práce čeká, vrací se a bere lidem energii. Procesní audit promění tyto dojmy v přehlednou mapu a pomůže vybrat první změnu, jejíž přínos půjde ověřit."
+      ],
+      "auditSelfCta": [
+        "Zmapovat proces s AI průvodcem ↗"
+      ],
+      "auditMeetingCta": [
+        "Domluvit konzultaci"
+      ],
+      "auditNote": [
+        "Stačí jedna skutečná zakázka. Nemusíte mít hotovou analýzu."
+      ],
+      "exampleTitle": [
+        "Co se změní u jedné poptávky"
+      ],
+      "exampleLead": [
+        "Z e-mailu k připravenému dalšímu kroku"
+      ],
+      "exampleManual": [
+        "Ručně"
+      ],
+      "exampleAuto": [
+        "S automatizací"
+      ],
+      "exampleMail": [
+        "Příchozí e-mail"
+      ],
+      "exampleMessage": [
+        "„Prosím o nabídku na pravidelný servis. Požadavky posílám v příloze. Můžete odpovědět do pátku?“"
+      ],
+      "exampleReady": [
+        "✓ Podklady připravené ke kontrole"
+      ],
+      "exampleField0": [
+        "Požadavek"
+      ],
+      "exampleField1": [
+        "Pravidelný servis"
+      ],
+      "exampleField2": [
+        "Termín"
+      ],
+      "exampleField3": [
+        "Pátek · ověřit datum"
+      ],
+      "exampleField4": [
+        "Příloha"
+      ],
+      "exampleField5": [
+        "Přiřazená k poptávce"
+      ],
+      "exampleField6": [
+        "Další krok"
+      ],
+      "exampleField7": [
+        "Návrh odpovědi a úkol pro obchod"
+      ],
+      "exampleReview": [
+        "AI připraví. Člověk zkontroluje."
+      ],
+      "exampleApproval": [
+        "Odpověď odejde až po schválení. Nejasné údaje zůstanou označené."
+      ],
+      "manualStep0": [
+        "Přečíst e-mail a najít přílohy"
+      ],
+      "manualStep1": [
+        "Přepsat údaje do evidence"
+      ],
+      "manualStep2": [
+        "Pohlídat termín a předat úkol"
+      ],
+      "manualStep3": [
+        "Napsat a odeslat odpověď"
+      ],
+      "manualNote": [
+        "Stejné kroky znovu u každé další poptávky."
+      ],
+      "exampleDisclaimer": [
+        "Modelový příklad. Konkrétní řešení závisí na vašich systémech."
+      ],
+      "focus": [
+        "Pro koho:"
+      ],
+      "f1": [
+        "Služby"
+      ],
+      "f2": [
+        "Výroba"
+      ],
+      "f3": [
+        "Ubytování"
+      ],
+      "f4": [
+        "Projektové firmy"
+      ],
+      "f5": [
+        "Neziskové organizace"
+      ],
+      "f6": [
+        "Online byznys"
+      ],
+      "sEy": [
+        "CO LZE AUTOMATIZOVAT"
+      ],
+      "sTitle": [
+        "Kde se vám práce zbytečně vrací na stůl?"
+      ],
+      "sLead": [
+        "Začněme jednou každodenní situací. Ve službách, výrobě i projektové firmě."
+      ],
+      "solutionTitle0": [
+        "Poptávky a obchod"
+      ],
+      "solutionBody0": [
+        "Údaje z e-mailu znovu přepisujete a hlídáte, komu ještě odpovědět. Automatizace připraví záznam, úkol i návrh odpovědi."
+      ],
+      "solutionRead": [
+        "Jak to může fungovat",
+        "Jak to může fungovat",
+        "Jak to může fungovat"
+      ],
+      "solutionTitle1": [
+        "Dokumenty a administrativa"
+      ],
+      "solutionBody1": [
+        "Podklady hledáte v přílohách a několika tabulkách. Propojíme jejich zpracování, evidenci a kontrolu."
+      ],
+      "solutionTitle2": [
+        "Předávání práce a servis"
+      ],
+      "solutionBody2": [
+        "Termíny a stav zakázky drží v hlavě konkrétní člověk. Nastavíme předávání úkolů a zprávy zákazníkům podle skutečného stavu."
+      ],
+      "hubBrief": [
+        "Potřebujete propojit více oblastí? Firemní AI asistenti mohou navazovat na stejná data a pravidla."
+      ],
+      "hubRead": [
+        "Jak funguje AI Hub"
+      ],
+      "ucEy": [
+        "POZNÁVÁTE SE V TOM?"
+      ],
+      "ucTitle": [
+        "Stejný problém. Jiný obor."
+      ],
+      "ucLead": [
+        "Příklady z rozhovorů s firmami. Ukazují možnosti řešení, nikoli slíbené výsledky."
+      ],
+      "uc3role": [
+        "PROJEKTOVÝ / OBCHODNÍ TÝM"
+      ],
+      "uc3q": [
+        "„V přílohách nesmíme přehlédnout důležitý termín.“"
+      ],
+      "uc3p": [
+        "Asistent vytáhne požadavky, označí chybějící podklady a připraví návrh odpovědi."
+      ],
+      "readCase": [
+        "Přečíst příklad",
+        "Přečíst příklad",
+        "Přečíst příklad"
+      ],
+      "uc4role": [
+        "MAJITEL SLUŽBOVÉ FIRMY"
+      ],
+      "uc4q": [
+        "„Na stav zakázky se zákazníci ptají pořád dokola.“"
+      ],
+      "uc4p": [
+        "Změna stavu spustí zprávu zákazníkovi. Výjimky převezme konkrétní člověk."
+      ],
+      "uc1role": [
+        "KONSTRUKTÉR"
+      ],
+      "uc1q": [
+        "„Jednou to zadám. Pak to přepisuji do dalších systémů.“"
+      ],
+      "uc1p": [
+        "Konstruktér vybere díl. Údaje se předají do navazující evidence s kontrolou člověkem."
+      ],
+      "allArticles": [
+        "Další příklady a články"
+      ],
+      "howEy": [
+        "JAK PRACUJEME"
+      ],
+      "howTitle": [
+        "Jeden proces. Malý pilot. Ověřený přínos."
+      ],
+      "howLead": [
+        "Před začátkem si domluvíme rozsah, cenu a způsob vyhodnocení."
+      ],
+      "pilotTitle0": [
+        "Najdeme bolestivý proces"
+      ],
+      "pilotText0": [
+        "Získáte přehled ručních kroků a návrh, kde začít. Zjistíme také, co má zůstat lidem."
+      ],
+      "pilotTitle1": [
+        "Postavíme malý pilot"
+      ],
+      "pilotText1": [
+        "Vyzkoušíte jeden postup na dohodnutých datech. Uvidíte výstup i místa, kde rozhoduje člověk."
+      ],
+      "pilotTitle2": [
+        "Změříme přínos"
+      ],
+      "pilotText2": [
+        "Porovnáme čas, chyby a náklady. Podle výsledku rozhodneme o předání a dalším rozvoji."
+      ],
+      "aEy": [
+        "O MNĚ"
+      ],
+      "aTitle": [
+        "20 let obchodní a konzultační praxe. Digitální technologie v reálném provozu."
+      ],
+      "a1": [
+        "Zkušenosti jsem získával v obchodní a konzultační činnosti ve společnostech DAGIS, CAD Studio a ARKANCE Systems. Pomáhal jsem firmám zavádět digitální technologie a hledat způsoby, jak lépe propojit lidi, data a každodenní práci."
+      ],
+      "a2": [
+        "Na tuto praxi dnes navazuji optimalizací procesů a automatizací. Navrhuji propojení stávajících systémů, vyvíjím AI asistenty a stavím vlastní produkty i menší piloty. Vždy mě zajímá, co řešení přinese lidem, kteří s ním budou pracovat."
+      ],
+      "quote": [
+        "Nejzajímavější automatizace často nezačíná otázkou „jakou AI koupit“, ale „co naši lidé dělají každý den zbytečně ručně?“"
+      ],
+      "impactShort": [
+        "V komunitním klubu STUDNA v Ostravě/Třebovicích připravuji také praktické workshopy digitální gramotnosti pro seniory."
+      ],
+      "rEy": [
+        "PROJEKTY & LAB"
+      ],
+      "rTitle": [
+        "Na čem pracuji"
+      ],
+      "rLead": [
+        "Výběr interních nástrojů a pilotů. U každého uvádím jeho aktuální stav."
+      ],
+      "projectState1": [
+        "Interní nástroj"
+      ],
+      "nexus": [
+        "Interní nástroj propojující kontakty, e-mail, schůzky a obchodní úkoly. Jeden kontext pro každodenní práci."
+      ],
+      "projectState3": [
+        "Pilot"
+      ],
+      "vhs": [
+        "Pilot asistenta pro službovou firmu: příjem poptávky a orientační nabídka. Navazující postup od objednávky po expedici se připravuje."
+      ],
+      "projectState4": [
+        "Technický pilot"
+      ],
+      "rfq": [
+        "Technický pilot pro poptávky, přílohy a přípravu kalkulačních podkladů. Údaje i návrhy procházejí kontrolou člověkem."
+      ],
+      "openTechnical": [
+        "Prohlédnout modelovou ukázku"
+      ],
+      "moreProjects": [
+        "Další vlastní projekty a výzkum"
+      ],
+      "projectState0": [
+        "Vlastní SaaS"
+      ],
+      "qma": [
+        "Vlastní analytická SaaS platforma pro akciové trhy: screening, skóre, backtesting, portfolio analytika, AI vysvětlení a automatizované výzkumné workflow."
+      ],
+      "projectState2": [
+        "Publikační projekt"
+      ],
+      "mypaper": [
+        "Autonomní publikační a analytický projekt s plánováním témat, rešerší, kontrolou zdrojů, AI redakcí a automatizovaným vydáváním obsahu."
+      ],
+      "projectState5": [
+        "Koncept"
+      ],
+      "nonprofitLabel": [
+        "Neziskový sektor"
+      ],
+      "nonprofitTitle": [
+        "AI Operations Hub pro neziskovou organizaci"
+      ],
+      "archa": [
+        "Koncept propojeného digitálního týmu pro komunikaci, plánování, meetingy, dokumenty, znalosti a další opakovanou administrativu."
+      ],
+      "projectState6": [
+        "Denní použití"
+      ],
+      "paTitle": [
+        "Osobní obchodní AI asistent"
+      ],
+      "pa": [
+        "Praktický asistent pro přípravu schůzek, práci s e-mailem, follow-up, zápisy, obchodní kontext a návrhy dalších kroků. Součástí vývoje je i hlasový/telefonní režim."
+      ],
+      "projectState7": [
+        "Výzkum a vývoj"
+      ],
+      "forge": [
+        "Výzkumný projekt autonomního vývoje produktu — od návrhu a implementace až po provozní a obchodní kroky. Slouží jako laboratoř pro agentní workflow."
+      ],
+      "technicalSummary": [
+        "Technická ukázka: výběr položek z poptávky"
+      ],
+      "dLead": [
+        "Vyzkoušejte výběr položek a stažení CSV na připravených modelových datech."
+      ],
+      "simulation": [
+        "Ukázková data"
+      ],
+      "upT": [
+        "Simulovat zpracování poptávky"
+      ],
+      "upP": [
+        "Použijeme připravený technický scénář steel_structure.step."
+      ],
+      "analyze": [
+        "Spustit analýzu"
+      ],
+      "file": [
+        "Případ"
+      ],
+      "done": [
+        "Modelový výsledek"
+      ],
+      "m1": [
+        "komponent"
+      ],
+      "m2": [
+        "plechů"
+      ],
+      "m3": [
+        "profilů"
+      ],
+      "m4": [
+        "položek k ověření"
+      ],
+      "part": [
+        "Díl"
+      ],
+      "type": [
+        "Typ"
+      ],
+      "length": [
+        "Délka"
+      ],
+      "demoProfile": [
+        "Profil",
+        "Profil"
+      ],
+      "demoPlate": [
+        "Krycí plech"
+      ],
+      "demoSheet": [
+        "Plech"
+      ],
+      "demoAngle": [
+        "Úhelník"
+      ],
+      "export": [
+        "Stáhnout vybrané položky (CSV)"
+      ],
+      "safe": [
+        "Bezpečná HTML simulace. Reálné zákaznické soubory se zde nenahrávají."
+      ],
+      "mydata": [
+        "Chci ukázku nad vlastním procesem →"
+      ],
+      "faqEy": [
+        "ČASTÉ OTÁZKY"
+      ],
+      "faqTitle": [
+        "Co potřebujete vědět před začátkem"
+      ],
+      "fq1q": [
+        "Děláte jen strojírenství a technické firmy?"
+      ],
+      "fq1a": [
+        "Ne. Technické firmy jsou jedna z oblastí, kde mám hlubokou zkušenost. Stejný princip automatizace ale používám pro služby, ubytování, projektové řízení, neziskový sektor, obsahové projekty i interní administrativu."
+      ],
+      "fq2q": [
+        "Musíme měnit současný software?"
+      ],
+      "fq2a": [
+        "Často ne. Nejprve hledáme způsob, jak propojit e-mail, kalendář, CRM, dokumenty, účetní nebo provozní systém a přidat nad ně automatizační a AI vrstvu."
+      ],
+      "fq3q": [
+        "Musíme začít velkým projektem?"
+      ],
+      "fq3a": [
+        "Ne. Preferuji jeden konkrétní proces, malý pilot a měřitelný výsledek. Rozšiřujeme až to, co se osvědčí."
+      ],
+      "fq4q": [
+        "Může AI jednat úplně sama?"
+      ],
+      "fq4a": [
+        "U rutinních kroků ano, u citlivých rozhodnutí navrhuji kontrolní body, oprávnění a schválení člověkem."
+      ],
+      "practicalQuestion0": [
+        "Kolik to bude stát?"
+      ],
+      "practicalAnswer0": [
+        "Cenu stanovíme podle konkrétního procesu, potřebných propojení a rozsahu pilotu. Před zahájením práce dostanete nabídku. Odeslání poptávky není placenou objednávkou."
+      ],
+      "practicalQuestion1": [
+        "Budeme platit za další nástroje?"
+      ],
+      "practicalAnswer1": [
+        "Někdy ano: například za používaný software, provoz nebo volání AI modelu. Návrh má odlišovat cenu realizace od průběžných nákladů. Konkrétní služby a rozpočet domluvíme předem."
+      ],
+      "practicalQuestion2": [
+        "Co naše data a přístupy?"
+      ],
+      "practicalAnswer2": [
+        "Před pilotem dohodneme, s jakými daty se pracuje, kdo k nim smí a které služby je zpracují. Do prvního kontaktního formuláře neposílejte hesla ani důvěrné zákaznické podklady."
+      ],
+      "practicalQuestion3": [
+        "Co dostaneme po předání a kdo řeší výpadek?"
+      ],
+      "practicalAnswer3": [
+        "Rozsah dokumentace, přístupů, práv k výstupům a následné podpory sjednáme v nabídce. Součástí návrhu je také postup při chybě a kroky, které může převzít člověk. Nepřetržitá podpora není automatickou součástí každého pilotu."
+      ],
+      "coEy": [
+        "POJĎME NA KONKRÉTNÍ PROCES"
+      ],
+      "coTitle": [
+        "Co vám dnes zbytečně bere čas?"
+      ],
+      "coLead": [
+        "Stačí jeden příklad z běžného dne. Ozvu se vám, upřesníme situaci a domluvíme další krok. Rozsah a cenu případné práce odsouhlasíme předem."
+      ],
+      "bookingTitle": [
+        "Vyberte si rovnou termín"
+      ],
+      "bookingText": [
+        "60 minut online · úterý až pátek 13:00–15:00. Kalendář nabídne jen volné časy."
+      ],
+      "bookingCta": [
+        "Rezervovat online schůzku ↗"
+      ],
+      "bookingNote": [
+        "Rezervace se otevře na stránce Microsoft Bookings."
+      ],
+      "name": [
+        "Jméno"
+      ],
+      "manual": [
+        "Co dnes lidé dělají ručně a co byste chtěli zlepšit?"
+      ],
+      "optionalDetails": [
+        "Doplnit firmu, telefon nebo oblast"
+      ],
+      "company": [
+        "Firma / projekt (volitelně)"
+      ],
+      "phone": [
+        "Telefon (volitelně)"
+      ],
+      "area": [
+        "Oblast (volitelně)"
+      ],
+      "choose": [
+        "Nemusím vědět přesně"
+      ],
+      "aopt1": [
+        "Marketing & obchod"
+      ],
+      "aopt2": [
+        "Provoz & administrativa"
+      ],
+      "aopt3": [
+        "Projekty & tým"
+      ],
+      "aopt4": [
+        "Zákaznická péče & servis"
+      ],
+      "aopt5": [
+        "AI Hub / agenti"
+      ],
+      "aopt6": [
+        "Jiný proces"
+      ],
+      "formPrivacy": [
+        "Údaje použiji k vyřízení vaší nezávazné poptávky. Odesláním nevzniká objednávka ani přihlášení k reklamě."
+      ],
+      "privacy": [
+        "Ochrana údajů a cookies",
+        "Ochrana údajů a cookies"
+      ],
+      "submit": [
+        "Odeslat poptávku"
+      ],
+      "chatShort": [
+        "Ukázka"
+      ],
+      "chatTitle": [
+        "Ukázkový průvodce"
+      ],
+      "chatStatus": [
+        "Předem připravené odpovědi · bez živé AI"
+      ],
+      "welcome": [
+        "Toto je ukázkový průvodce. Můžete se zeptat na nabídku služeb. Zprávy se Jaroslavovi neodesílají; pro skutečný kontakt použijte tlačítko níže."
+      ],
+      "q1": [
+        "Co je AI Hub?"
+      ],
+      "q2": [
+        "Co umíte v obchodu?"
+      ],
+      "q3": [
+        "Jak spolupráce začíná?"
+      ],
+      "chatContact": [
+        "Napsat Jaroslavovi"
+      ],
+      "foot1": [
+        "Kontakt"
+      ],
+      "foot2": [
+        "Právní informace"
+      ],
+      "legalOperator": [
+        "Provozovatel webu"
+      ],
+      "legalTerms": [
+        "Obchodní podmínky"
+      ]
+    },
+    "placeholders": [
+      "textarea#message: Např. stejné údaje píšeme do několika tabulek a ručně hlídáme, kdo už odpověděl zákazníkovi…",
+      "input#chatInput: Napište dotaz..."
+    ],
+    "alts": [
+      "img: PROCELYX",
+      "img: Jaroslav Vojtášek",
+      "img: Přílohy pod kontrolou",
+      "img: Zákazník ví, co se děje",
+      "img: Díl zadáte pouze jednou",
+      "img: Jaroslav Vojtášek",
+      "img: PROCELYX"
+    ],
+    "ariaLabels": [
+      "a: QR kód a vizitka",
+      "button#lang: Switch to English",
+      "button#menu: Otevřít menu",
+      "div#mobile: Mobilní navigace",
+      "div: Způsob zpracování",
+      "input: Vybrat položku 1",
+      "input: Vybrat položku 2",
+      "input: Vybrat položku 3",
+      "input: Vybrat položku 4",
+      "form#leadForm: Kontaktní formulář",
+      "button#chatBtn: Otevřít ukázkového asistenta",
+      "button#close: Zavřít asistenta",
+      "input#chatInput: Dotaz pro ukázkového asistenta",
+      "button: Odeslat dotaz"
+    ],
+    "bodyText": "Přejít na obsah Co automatizujemeJak pracujemeProjektyČlánkyO mněKontaktQRENNajít, kde ztrácíme čas☰Co automatizujemeJak pracujemeProjektyPříklady z praxeČlánkyO mněKontakt Není čas ztrácet čas.Vaši lidé mají na víc než práci, která je zbytečně zdržuje. Hledání podkladů, čekání na informace, hlídání úkolů. Propojíme vaše systémy a zautomatizujeme opakující se práci. Získáte čas na to podstatné.Najít, kde ztrácíme časProhlédnout příkladNemusíte znát řešení. Stačí popsat, co vás zdržuje.Jaroslav Vojtášek20 let obchodní a konzultační praxe. Digitální technologie v reálném provozu.ZAČNĚTE TAM, KDE TO DÁVÁ SMYSLNejdřív pochopit. Potom automatizovat.Nejrychlejší cesta k plynulejším zakázkám nezačíná dalším softwarem. Začíná tím, že uvidíte, kde dnes práce čeká, vrací se a bere lidem energii. Procesní audit promění tyto dojmy v přehlednou mapu a pomůže vybrat první změnu, jejíž přínos půjde ověřit.Zmapovat proces s AI průvodcem ↗Domluvit konzultaciStačí jedna skutečná zakázka. Nemusíte mít hotovou analýzu. Co se změní u jedné poptávkyZ e-mailu k připravenému dalšímu krokuRučněS automatizací✉Příchozí e-mail„Prosím o nabídku na pravidelný servis. Požadavky posílám v příloze. Můžete odpovědět do pátku?“✓ Podklady připravené ke kontrolePožadavekPravidelný servisTermínPátek · ověřit datumPřílohaPřiřazená k poptávceDalší krokNávrh odpovědi a úkol pro obchodAI připraví. Člověk zkontroluje.Odpověď odejde až po schválení. Nejasné údaje zůstanou označené.1Přečíst e-mail a najít přílohy2Přepsat údaje do evidence3Pohlídat termín a předat úkol4Napsat a odeslat odpověďStejné kroky znovu u každé další poptávky.Modelový příklad. Konkrétní řešení závisí na vašich systémech. Pro koho:SlužbyVýrobaUbytováníProjektové firmyNeziskové organizaceOnline byznys CO LZE AUTOMATIZOVATKde se vám práce zbytečně vrací na stůl?Začněme jednou každodenní situací. Ve službách, výrobě i projektové firmě. Poptávky a obchodÚdaje z e-mailu znovu přepisujete a hlídáte, komu ještě odpovědět. Automatizace připraví záznam, úkol i návrh odpovědi.Jak to může fungovatDokumenty a administrativaPodklady hledáte v přílohách a několika tabulkách. Propojíme jejich zpracování, evidenci a kontrolu.Jak to může fungovatPředávání práce a servisTermíny a stav zakázky drží v hlavě konkrétní člověk. Nastavíme předávání úkolů a zprávy zákazníkům podle skutečného stavu.Jak to může fungovatPotřebujete propojit více oblastí? Firemní AI asistenti mohou navazovat na stejná data a pravidla.Jak funguje AI Hub POZNÁVÁTE SE V TOM?Stejný problém. Jiný obor.Příklady z rozhovorů s firmami. Ukazují možnosti řešení, nikoli slíbené výsledky. PROJEKTOVÝ / OBCHODNÍ TÝM„V přílohách nesmíme přehlédnout důležitý termín.“Asistent vytáhne požadavky, označí chybějící podklady a připraví návrh odpovědi.Přečíst příkladMAJITEL SLUŽBOVÉ FIRMY„Na stav zakázky se zákazníci ptají pořád dokola.“Změna stavu spustí zprávu zákazníkovi. Výjimky převezme konkrétní člověk.Přečíst příkladKONSTRUKTÉR„Jednou to zadám. Pak to přepisuji do dalších systémů.“Konstruktér vybere díl. Údaje se předají do navazující evidence s kontrolou člověkem.Přečíst příkladDalší příklady a články JAK PRACUJEMEJeden proces. Malý pilot. Ověřený přínos.Před začátkem si domluvíme rozsah, cenu a způsob vyhodnocení.01Najdeme bolestivý procesZískáte přehled ručních kroků a návrh, kde začít. Zjistíme také, co má zůstat lidem.02Postavíme malý pilotVyzkoušíte jeden postup na dohodnutých datech. Uvidíte výstup i místa, kde rozhoduje člověk.03Změříme přínosPorovnáme čas, chyby a náklady. Podle výsledku rozhodneme o předání a dalším rozvoji.O MNĚ20 let obchodní a konzultační praxe. Digitální technologie v reálném provozu. Zkušenosti jsem získával v obchodní a konzultační činnosti ve společnostech DAGIS, CAD Studio a ARKANCE Systems. Pomáhal jsem firmám zavádět digitální technologie a hledat způsoby, jak lépe propojit lidi, data a každodenní práci. Na tuto praxi dnes navazuji optimalizací procesů a automatizací. Navrhuji propojení stávajících systémů, vyvíjím AI asistenty a stavím vlastní produkty i menší piloty. Vždy mě zajímá, co řešení přinese lidem, kteří s ním budou pracovat. Nejzajímavější automatizace často nezačíná otázkou „jakou AI koupit“, ale „co naši lidé dělají každý den zbytečně ručně?“ Jaroslav VojtášekZakladatel PROCELYX · Automatizace a digitální procesyV komunitním klubu STUDNA v Ostravě/Třebovicích připravuji také praktické workshopy digitální gramotnosti pro seniory. PROJEKTY & LABNa čem pracujiVýběr interních nástrojů a pilotů. U každého uvádím jeho aktuální stav. Interní nástrojNEXUS ONENexus OneInterní nástroj propojující kontakty, e-mail, schůzky a obchodní úkoly. Jeden kontext pro každodenní práci.PilotDIGITÁLNÍ VHSDigitálníVHS AI HubPilot asistenta pro službovou firmu: příjem poptávky a orientační nabídka. Navazující postup od objednávky po expedici se připravuje.Technický pilotRFQ COPILOTRFQ Preparation CopilotTechnický pilot pro poptávky, přílohy a přípravu kalkulačních podkladů. Údaje i návrhy procházejí kontrolou člověkem.Prohlédnout modelovou ukázkuDalší vlastní projekty a výzkumVlastní SaaSQMAQuantum Market AnalyzerVlastní analytická SaaS platforma pro akciové trhy: screening, skóre, backtesting, portfolio analytika, AI vysvětlení a automatizované výzkumné workflow.DataAISaaSAutomationPublikační projektMY PAPERMy Paper / The Wider LensAutonomní publikační a analytický projekt s plánováním témat, rešerší, kontrolou zdrojů, AI redakcí a automatizovaným vydáváním obsahu.Content OpsResearchAutomationKonceptNeziskový sektorAI Operations Hub pro neziskovou organizaciKoncept propojeného digitálního týmu pro komunikaci, plánování, meetingy, dokumenty, znalosti a další opakovanou administrativu.NonprofitAgentsOperationsDenní použitíAI ASSISTANTOsobní obchodní AI asistentPraktický asistent pro přípravu schůzek, práci s e-mailem, follow-up, zápisy, obchodní kontext a návrhy dalších kroků. Součástí vývoje je i hlasový/telefonní režim.SalesVoiceMemoryAssistantVýzkum a vývojFORGE FACTORYForge FactoryVýzkumný projekt autonomního vývoje produktu — od návrhu a implementace až po provozní a obchodní kroky. Slouží jako laboratoř pro agentní workflow.R&DAutonomyAgents Technická ukázka: výběr položek z poptávkyVyzkoušejte výběr položek a stažení CSV na připravených modelových datech.PROCELYX DemoUkázková data⬡Simulovat zpracování poptávkyPoužijeme připravený technický scénář steel_structure.step.Spustit analýzuPřípadsteel_structure.step✓ Modelový výsledek47komponent14plechů18profilů7položek k ověřeníDílTypDélkaRHS 50×50×3Profil1240 mmRHS 50×50×3Profil890 mmKrycí plechPlech—L40×40×4Úhelník460 mmStáhnout vybrané položky (CSV)Bezpečná HTML simulace. Reálné zákaznické soubory se zde nenahrávají.Chci ukázku nad vlastním procesem → ČASTÉ OTÁZKYCo potřebujete vědět před začátkem Děláte jen strojírenství a technické firmy?Ne. Technické firmy jsou jedna z oblastí, kde mám hlubokou zkušenost. Stejný princip automatizace ale používám pro služby, ubytování, projektové řízení, neziskový sektor, obsahové projekty i interní administrativu. Musíme měnit současný software?Často ne. Nejprve hledáme způsob, jak propojit e-mail, kalendář, CRM, dokumenty, účetní nebo provozní systém a přidat nad ně automatizační a AI vrstvu. Musíme začít velkým projektem?Ne. Preferuji jeden konkrétní proces, malý pilot a měřitelný výsledek. Rozšiřujeme až to, co se osvědčí. Může AI jednat úplně sama?U rutinních kroků ano, u citlivých rozhodnutí navrhuji kontrolní body, oprávnění a schválení člověkem. Kolik to bude stát?Cenu stanovíme podle konkrétního procesu, potřebných propojení a rozsahu pilotu. Před zahájením práce dostanete nabídku. Odeslání poptávky není placenou objednávkou.Budeme platit za další nástroje?Někdy ano: například za používaný software, provoz nebo volání AI modelu. Návrh má odlišovat cenu realizace od průběžných nákladů. Konkrétní služby a rozpočet domluvíme předem.Co naše data a přístupy?Před pilotem dohodneme, s jakými daty se pracuje, kdo k nim smí a které služby je zpracují. Do prvního kontaktního formuláře neposílejte hesla ani důvěrné zákaznické podklady.Co dostaneme po předání a kdo řeší výpadek?Rozsah dokumentace, přístupů, práv k výstupům a následné podpory sjednáme v nabídce. Součástí návrhu je také postup při chybě a kroky, které může převzít člověk. Nepřetržitá podpora není automatickou součástí každého pilotu. POJĎME NA KONKRÉTNÍ PROCESCo vám dnes zbytečně bere čas?Stačí jeden příklad z běžného dne. Ozvu se vám, upřesníme situaci a domluvíme další krok. Rozsah a cenu případné práce odsouhlasíme předem. Emailjarda.vojtasek@procelyx.czTelefon+420 724 796 243 Vyberte si rovnou termín60 minut online · úterý až pátek 13:00–15:00. Kalendář nabídne jen volné časy.Rezervovat online schůzku ↗Rezervace se otevře na stránce Microsoft Bookings. JménoE-mailCo dnes lidé dělají ručně a co byste chtěli zlepšit?Doplnit firmu, telefon nebo oblastFirma / projekt (volitelně)Telefon (volitelně)Oblast (volitelně)Nemusím vědět přesněMarketing & obchodProvoz & administrativaProjekty & týmZákaznická péče & servisAI Hub / agentiJiný proces WebÚdaje použiji k vyřízení vaší nezávazné poptávky. Odesláním nevzniká objednávka ani přihlášení k reklamě.Ochrana údajů a cookies Odeslat poptávku Pro odeslání formuláře zapněte JavaScript. Případně použijte e-mail nebo telefon uvedený vedle formuláře. UkázkaUkázkový průvodcePředem připravené odpovědi · bez živé AI×Toto je ukázkový průvodce. Můžete se zeptat na nabídku služeb. Zprávy se Jaroslavovi neodesílají; pro skutečný kontakt použijte tlačítko níže.Co je AI Hub?Co umíte v obchodu?Jak spolupráce začíná?→Napsat Jaroslavovi Kontaktjarda.vojtasek@procelyx.cz+420 724 796 243Právní informaceJaroslav VojtášekIČO: 48783447Ochrana údajů a cookiesProvozovatel webuObchodní podmínky© 2026 PROCELYX",
+    "domSha256": "e5a311974beb1d5a28e6cbde110889bcbc7a071f00ef540c13e1ce13dad374f7"
+  },
+  "en": {
+    "lang": "en",
+    "title": "PROCELYX — AI Automation & Digital Processes for Business",
+    "description": "Less data entry, smoother handovers and a clear view of your work. PROCELYX connects your systems and introduces AI automation through one measurable pilot.",
+    "dataT": {
+      "nav1": [
+        "What we automate",
+        "What we automate"
+      ],
+      "nav2": [
+        "How we work",
+        "How we work"
+      ],
+      "nav3": [
+        "Projects",
+        "Projects"
+      ],
+      "nav7": [
+        "Articles (Czech)",
+        "Articles (Czech)"
+      ],
+      "nav4": [
+        "About",
+        "About"
+      ],
+      "nav5": [
+        "Contact",
+        "Contact"
+      ],
+      "navcta": [
+        "Find where we lose time"
+      ],
+      "nav6": [
+        "Practical examples"
+      ],
+      "h1": [
+        "There is no time to waste."
+      ],
+      "lead": [
+        "Your people have more to offer than work that needlessly slows them down. Searching for documents, waiting for information, chasing tasks. We connect your systems and automate repetitive work. You gain time for what matters."
+      ],
+      "cta2": [
+        "Find where we lose time"
+      ],
+      "heroExample": [
+        "Explore an example"
+      ],
+      "heroReassure": [
+        "You do not need a solution yet. Just tell us what slows you down."
+      ],
+      "heroExperience": [
+        "20 years in sales and consulting. Digital technology in real operations."
+      ],
+      "auditEyebrow": [
+        "START WHERE IT MATTERS"
+      ],
+      "auditTitle": [
+        "Understand first. Then automate."
+      ],
+      "auditText": [
+        "The fastest path to smoother orders does not start with another software purchase. It starts by seeing where work waits, comes back for corrections and drains your team. A process audit turns impressions into a clear map and helps you choose a first change you can measure."
+      ],
+      "auditSelfCta": [
+        "Map a process with an AI guide ↗"
+      ],
+      "auditMeetingCta": [
+        "Book a consultation"
+      ],
+      "auditNote": [
+        "One real order is enough. You do not need a complete analysis."
+      ],
+      "exampleTitle": [
+        "What changes with one inquiry"
+      ],
+      "exampleLead": [
+        "From an email to a prepared next step"
+      ],
+      "exampleManual": [
+        "Manually"
+      ],
+      "exampleAuto": [
+        "With automation"
+      ],
+      "exampleMail": [
+        "Incoming email"
+      ],
+      "exampleMessage": [
+        "“Please send a quote for regular servicing. Requirements are attached. Can you respond by Friday?”"
+      ],
+      "exampleReady": [
+        "✓ Details ready for review"
+      ],
+      "exampleField0": [
+        "Request"
+      ],
+      "exampleField1": [
+        "Regular servicing"
+      ],
+      "exampleField2": [
+        "Deadline"
+      ],
+      "exampleField3": [
+        "Friday · confirm the date"
+      ],
+      "exampleField4": [
+        "Attachment"
+      ],
+      "exampleField5": [
+        "Linked to the inquiry"
+      ],
+      "exampleField6": [
+        "Next step"
+      ],
+      "exampleField7": [
+        "Draft reply and task for sales"
+      ],
+      "exampleReview": [
+        "AI prepares. A person reviews."
+      ],
+      "exampleApproval": [
+        "The reply is sent only after approval. Unclear details stay flagged."
+      ],
+      "manualStep0": [
+        "Read the email and find attachments"
+      ],
+      "manualStep1": [
+        "Re-enter details in the records"
+      ],
+      "manualStep2": [
+        "Track the deadline and assign a task"
+      ],
+      "manualStep3": [
+        "Write and send a reply"
+      ],
+      "manualNote": [
+        "The same steps again for every new inquiry."
+      ],
+      "exampleDisclaimer": [
+        "Illustrative example. The actual solution depends on your systems."
+      ],
+      "focus": [
+        "For:"
+      ],
+      "f1": [
+        "Services"
+      ],
+      "f2": [
+        "Manufacturing"
+      ],
+      "f3": [
+        "Hospitality"
+      ],
+      "f4": [
+        "Project businesses"
+      ],
+      "f5": [
+        "Nonprofits"
+      ],
+      "f6": [
+        "Online business"
+      ],
+      "sEy": [
+        "WHAT CAN BE AUTOMATED"
+      ],
+      "sTitle": [
+        "Where does work keep landing back on your desk?"
+      ],
+      "sLead": [
+        "Start with one everyday situation, whether in services, manufacturing or a project business."
+      ],
+      "solutionTitle0": [
+        "Inquiries and sales"
+      ],
+      "solutionBody0": [
+        "You retype email details and track who still needs a reply. Automation prepares the record, task and draft response."
+      ],
+      "solutionRead": [
+        "See how it can work",
+        "See how it can work",
+        "See how it can work"
+      ],
+      "solutionTitle1": [
+        "Documents and administration"
+      ],
+      "solutionBody1": [
+        "Documents are scattered across attachments and spreadsheets. We connect processing, records and review."
+      ],
+      "solutionTitle2": [
+        "Handover and service"
+      ],
+      "solutionBody2": [
+        "One person keeps deadlines and order status in their head. We set up task handovers and customer updates based on actual progress."
+      ],
+      "hubBrief": [
+        "Need to connect several areas? Company AI assistants can work from shared data and rules."
+      ],
+      "hubRead": [
+        "How an AI Hub works"
+      ],
+      "ucEy": [
+        "DOES THIS SOUND FAMILIAR?"
+      ],
+      "ucTitle": [
+        "The same problem. A different industry."
+      ],
+      "ucLead": [
+        "Examples from conversations with businesses. They illustrate possible solutions, not promised results."
+      ],
+      "uc3role": [
+        "PROJECT / SALES TEAM"
+      ],
+      "uc3q": [
+        "“We cannot miss a key deadline in the attachments.”"
+      ],
+      "uc3p": [
+        "An assistant extracts requirements, flags missing documents and drafts a response."
+      ],
+      "readCase": [
+        "Read the example (Czech)",
+        "Read the example (Czech)",
+        "Read the example (Czech)"
+      ],
+      "uc4role": [
+        "SERVICE BUSINESS OWNER"
+      ],
+      "uc4q": [
+        "“Customers keep asking about their order status.”"
+      ],
+      "uc4p": [
+        "A status change triggers a customer update. A designated person handles exceptions."
+      ],
+      "uc1role": [
+        "DESIGN ENGINEER"
+      ],
+      "uc1q": [
+        "“I enter it once. Then retype it into other systems.”"
+      ],
+      "uc1p": [
+        "An engineer selects a part. Its data passes to the next system with human review."
+      ],
+      "allArticles": [
+        "More examples and articles (Czech)"
+      ],
+      "howEy": [
+        "HOW WE WORK"
+      ],
+      "howTitle": [
+        "One process. A small pilot. Measured value."
+      ],
+      "howLead": [
+        "Before starting, we agree on scope, price and how to evaluate the outcome."
+      ],
+      "pilotTitle0": [
+        "Find the process that hurts"
+      ],
+      "pilotText0": [
+        "You get a map of manual steps and a recommendation on where to start. We also identify what people should keep doing."
+      ],
+      "pilotTitle1": [
+        "Build a small pilot"
+      ],
+      "pilotText1": [
+        "You test one workflow using agreed data. You see the output and the points where a person decides."
+      ],
+      "pilotTitle2": [
+        "Measure the outcome"
+      ],
+      "pilotText2": [
+        "We compare time, errors and costs. The results guide handover and further development."
+      ],
+      "aEy": [
+        "ABOUT"
+      ],
+      "aTitle": [
+        "20 years in sales and consulting. Digital technology in real operations."
+      ],
+      "a1": [
+        "I gained my sales and consulting experience at DAGIS, CAD Studio and ARKANCE Systems, helping companies adopt digital technology and connect people, data and everyday work."
+      ],
+      "a2": [
+        "Today I build on that experience through process optimization and automation. I connect existing systems, develop AI assistants and build my own products and focused pilots, always considering the people who will use the result."
+      ],
+      "quote": [
+        "The most interesting automation often starts not with “which AI should we buy?” but with “what are our people still doing manually every day?”"
+      ],
+      "impactShort": [
+        "I also prepare practical digital literacy workshops for seniors at the STUDNA community club in Ostrava/Třebovice."
+      ],
+      "rEy": [
+        "PROJECTS & LAB"
+      ],
+      "rTitle": [
+        "What I work on"
+      ],
+      "rLead": [
+        "Selected internal tools and pilots, each with its current status."
+      ],
+      "projectState1": [
+        "Internal tool"
+      ],
+      "nexus": [
+        "An internal tool connecting contacts, email, meetings and sales tasks, with shared context for daily work."
+      ],
+      "projectState3": [
+        "Pilot"
+      ],
+      "vhs": [
+        "A service-business assistant pilot for inquiry intake and indicative quotes. The order-to-dispatch workflow is in preparation."
+      ],
+      "projectState4": [
+        "Technical pilot"
+      ],
+      "rfq": [
+        "A technical pilot for inquiries, attachments and estimating inputs. People review the data and proposals."
+      ],
+      "openTechnical": [
+        "Explore the illustrative demo"
+      ],
+      "moreProjects": [
+        "More independent projects and research"
+      ],
+      "projectState0": [
+        "Own SaaS"
+      ],
+      "qma": [
+        "My own stock-market analytics SaaS: screening, scoring, backtesting, portfolio analytics, AI explanations and automated research workflows."
+      ],
+      "projectState2": [
+        "Publishing project"
+      ],
+      "mypaper": [
+        "An autonomous publishing and analysis project with topic planning, research, source checking, AI editorial workflows and automated publishing."
+      ],
+      "projectState5": [
+        "Concept"
+      ],
+      "nonprofitLabel": [
+        "Nonprofit sector"
+      ],
+      "nonprofitTitle": [
+        "AI Operations Hub for a nonprofit"
+      ],
+      "archa": [
+        "A concept for a connected digital team handling communication, planning, meetings, documents, knowledge and repetitive administration."
+      ],
+      "projectState6": [
+        "Daily use"
+      ],
+      "paTitle": [
+        "Personal sales AI assistant"
+      ],
+      "pa": [
+        "A practical assistant for meeting preparation, email, follow-up, notes, business context and recommended next steps. Voice/phone mode is part of the development."
+      ],
+      "projectState7": [
+        "Research & development"
+      ],
+      "forge": [
+        "A research project exploring autonomous product development — from design and implementation to operational and sales steps. It is a lab for agentic workflows."
+      ],
+      "technicalSummary": [
+        "Technical demo: select inquiry items"
+      ],
+      "dLead": [
+        "Try selecting items and downloading a CSV using prepared sample data."
+      ],
+      "simulation": [
+        "Sample data"
+      ],
+      "upT": [
+        "Simulate RFQ processing"
+      ],
+      "upP": [
+        "We will use a prepared technical scenario, steel_structure.step."
+      ],
+      "analyze": [
+        "Run analysis"
+      ],
+      "file": [
+        "Case"
+      ],
+      "done": [
+        "Illustrative result"
+      ],
+      "m1": [
+        "components"
+      ],
+      "m2": [
+        "sheet parts"
+      ],
+      "m3": [
+        "profiles"
+      ],
+      "m4": [
+        "items to verify"
+      ],
+      "part": [
+        "Part"
+      ],
+      "type": [
+        "Type"
+      ],
+      "length": [
+        "Length"
+      ],
+      "demoProfile": [
+        "Profile",
+        "Profile"
+      ],
+      "demoPlate": [
+        "Cover plate"
+      ],
+      "demoSheet": [
+        "Sheet metal"
+      ],
+      "demoAngle": [
+        "Angle"
+      ],
+      "export": [
+        "Download selected items (CSV)"
+      ],
+      "safe": [
+        "Safe HTML simulation. No real customer files are uploaded."
+      ],
+      "mydata": [
+        "Show this on my own process →"
+      ],
+      "faqEy": [
+        "FAQ"
+      ],
+      "faqTitle": [
+        "What to know before starting"
+      ],
+      "fq1q": [
+        "Do you only work with manufacturing and technical companies?"
+      ],
+      "fq1a": [
+        "No. Technical companies are one area where I have deep experience. The same automation principles also apply to services, hospitality, project management, nonprofits, content businesses and internal administration."
+      ],
+      "fq2q": [
+        "Do we have to replace our current software?"
+      ],
+      "fq2a": [
+        "Often not. We first look for ways to connect email, calendars, CRM, documents, accounting or operational systems and add an automation and AI layer on top."
+      ],
+      "fq3q": [
+        "Do we need to start with a large project?"
+      ],
+      "fq3a": [
+        "No. I prefer one concrete process, a small pilot and a measurable result. We expand only what proves useful."
+      ],
+      "fq4q": [
+        "Can AI act completely on its own?"
+      ],
+      "fq4a": [
+        "For routine steps, yes. For sensitive decisions I design permissions, checkpoints and human approval."
+      ],
+      "practicalQuestion0": [
+        "What will it cost?"
+      ],
+      "practicalAnswer0": [
+        "Pricing depends on the process, integrations and pilot scope. You receive a proposal before work starts. Sending an inquiry does not place a paid order."
+      ],
+      "practicalQuestion1": [
+        "Will we pay for additional tools?"
+      ],
+      "practicalAnswer1": [
+        "Sometimes, for example for software, hosting or AI model calls. The proposal distinguishes implementation fees from ongoing costs. We agree on services and budget in advance."
+      ],
+      "practicalQuestion2": [
+        "What about our data and access?"
+      ],
+      "practicalAnswer2": [
+        "Before the pilot we agree on the data, who can access it and which services process it. Do not include passwords or confidential customer documents in the initial contact form."
+      ],
+      "practicalQuestion3": [
+        "What is handed over and who handles failures?"
+      ],
+      "practicalAnswer3": [
+        "Documentation, access, rights to deliverables and ongoing support are agreed in the proposal. The design also covers failure handling and steps a person can take over. Round-the-clock support is not included automatically."
+      ],
+      "coEy": [
+        "LET’S START WITH ONE PROCESS"
+      ],
+      "coTitle": [
+        "What takes up your time unnecessarily?"
+      ],
+      "coLead": [
+        "One example from a typical day is enough. I will get in touch to clarify the situation and agree on the next step. We agree on the scope and price of any work in advance."
+      ],
+      "bookingTitle": [
+        "Choose a time that works for you"
+      ],
+      "bookingText": [
+        "60 minutes online · Tuesday to Friday, 13:00–15:00 (Prague time). Only available times are offered."
+      ],
+      "bookingCta": [
+        "Book an online meeting ↗"
+      ],
+      "bookingNote": [
+        "Booking opens on Microsoft Bookings."
+      ],
+      "name": [
+        "Name"
+      ],
+      "manual": [
+        "What do people do manually today and what would you like to improve?"
+      ],
+      "optionalDetails": [
+        "Add company, phone or area"
+      ],
+      "company": [
+        "Company / project (optional)"
+      ],
+      "phone": [
+        "Phone (optional)"
+      ],
+      "area": [
+        "Area (optional)"
+      ],
+      "choose": [
+        "Not sure yet"
+      ],
+      "aopt1": [
+        "Marketing & sales"
+      ],
+      "aopt2": [
+        "Operations & administration"
+      ],
+      "aopt3": [
+        "Projects & teams"
+      ],
+      "aopt4": [
+        "Customer care & service"
+      ],
+      "aopt5": [
+        "AI Hub / agents"
+      ],
+      "aopt6": [
+        "Another process"
+      ],
+      "formPrivacy": [
+        "Your details will be used to respond to your non-binding inquiry. Sending it does not place an order or subscribe you to advertising."
+      ],
+      "privacy": [
+        "Privacy and cookies (Czech)",
+        "Privacy and cookies (Czech)"
+      ],
+      "submit": [
+        "Send inquiry"
+      ],
+      "chatShort": [
+        "Demo"
+      ],
+      "chatTitle": [
+        "Demo guide"
+      ],
+      "chatStatus": [
+        "Prepared answers · no live AI"
+      ],
+      "welcome": [
+        "This is a demo guide to our services. Your messages are not sent to Jaroslav. Use the button below to get in touch."
+      ],
+      "q1": [
+        "What is an AI Hub?"
+      ],
+      "q2": [
+        "What can you automate in sales?"
+      ],
+      "q3": [
+        "How do we start?"
+      ],
+      "chatContact": [
+        "Contact Jaroslav"
+      ],
+      "foot1": [
+        "Contact"
+      ],
+      "foot2": [
+        "Legal"
+      ],
+      "legalOperator": [
+        "Website operator (Czech)"
+      ],
+      "legalTerms": [
+        "Business terms (Czech)"
+      ]
+    },
+    "placeholders": [
+      "textarea#message: For example: we enter the same details in several spreadsheets and manually track who has replied to the customer…",
+      "input#chatInput: Type a question..."
+    ],
+    "alts": [
+      "img: PROCELYX",
+      "img: Jaroslav Vojtášek",
+      "img: Attachments under control",
+      "img: Customers know the status",
+      "img: Enter part data once",
+      "img: Jaroslav Vojtášek",
+      "img: PROCELYX"
+    ],
+    "ariaLabels": [
+      "a: QR code and contact card",
+      "button#lang: Přepnout do češtiny",
+      "button#menu: Open menu",
+      "div#mobile: Mobilní navigace",
+      "div: Processing method",
+      "input: Select item 1",
+      "input: Select item 2",
+      "input: Select item 3",
+      "input: Select item 4",
+      "form#leadForm: Contact form",
+      "button#chatBtn: Open demo assistant",
+      "button#close: Close assistant",
+      "input#chatInput: Question for demo assistant",
+      "button: Send question"
+    ],
+    "bodyText": "Skip to content What we automateHow we workProjectsArticles (Czech)AboutContactQRCZFind where we lose time☰What we automateHow we workProjectsPractical examplesArticles (Czech)AboutContact There is no time to waste.Your people have more to offer than work that needlessly slows them down. Searching for documents, waiting for information, chasing tasks. We connect your systems and automate repetitive work. You gain time for what matters.Find where we lose timeExplore an exampleYou do not need a solution yet. Just tell us what slows you down.Jaroslav Vojtášek20 years in sales and consulting. Digital technology in real operations.START WHERE IT MATTERSUnderstand first. Then automate.The fastest path to smoother orders does not start with another software purchase. It starts by seeing where work waits, comes back for corrections and drains your team. A process audit turns impressions into a clear map and helps you choose a first change you can measure.Map a process with an AI guide ↗Book a consultationOne real order is enough. You do not need a complete analysis. What changes with one inquiryFrom an email to a prepared next stepManuallyWith automation✉Incoming email“Please send a quote for regular servicing. Requirements are attached. Can you respond by Friday?”✓ Details ready for reviewRequestRegular servicingDeadlineFriday · confirm the dateAttachmentLinked to the inquiryNext stepDraft reply and task for salesAI prepares. A person reviews.The reply is sent only after approval. Unclear details stay flagged.1Read the email and find attachments2Re-enter details in the records3Track the deadline and assign a task4Write and send a replyThe same steps again for every new inquiry.Illustrative example. The actual solution depends on your systems. For:ServicesManufacturingHospitalityProject businessesNonprofitsOnline business WHAT CAN BE AUTOMATEDWhere does work keep landing back on your desk?Start with one everyday situation, whether in services, manufacturing or a project business. Inquiries and salesYou retype email details and track who still needs a reply. Automation prepares the record, task and draft response.See how it can workDocuments and administrationDocuments are scattered across attachments and spreadsheets. We connect processing, records and review.See how it can workHandover and serviceOne person keeps deadlines and order status in their head. We set up task handovers and customer updates based on actual progress.See how it can workNeed to connect several areas? Company AI assistants can work from shared data and rules.How an AI Hub works DOES THIS SOUND FAMILIAR?The same problem. A different industry.Examples from conversations with businesses. They illustrate possible solutions, not promised results. PROJECT / SALES TEAM“We cannot miss a key deadline in the attachments.”An assistant extracts requirements, flags missing documents and drafts a response.Read the example (Czech)SERVICE BUSINESS OWNER“Customers keep asking about their order status.”A status change triggers a customer update. A designated person handles exceptions.Read the example (Czech)DESIGN ENGINEER“I enter it once. Then retype it into other systems.”An engineer selects a part. Its data passes to the next system with human review.Read the example (Czech)More examples and articles (Czech) HOW WE WORKOne process. A small pilot. Measured value.Before starting, we agree on scope, price and how to evaluate the outcome.01Find the process that hurtsYou get a map of manual steps and a recommendation on where to start. We also identify what people should keep doing.02Build a small pilotYou test one workflow using agreed data. You see the output and the points where a person decides.03Measure the outcomeWe compare time, errors and costs. The results guide handover and further development.ABOUT20 years in sales and consulting. Digital technology in real operations. I gained my sales and consulting experience at DAGIS, CAD Studio and ARKANCE Systems, helping companies adopt digital technology and connect people, data and everyday work. Today I build on that experience through process optimization and automation. I connect existing systems, develop AI assistants and build my own products and focused pilots, always considering the people who will use the result. The most interesting automation often starts not with “which AI should we buy?” but with “what are our people still doing manually every day?” Jaroslav VojtášekFounder of PROCELYX · Automation & digital processesI also prepare practical digital literacy workshops for seniors at the STUDNA community club in Ostrava/Třebovice. PROJECTS & LABWhat I work onSelected internal tools and pilots, each with its current status. Internal toolNEXUS ONENexus OneAn internal tool connecting contacts, email, meetings and sales tasks, with shared context for daily work.PilotDIGITÁLNÍ VHSDigitálníVHS AI HubA service-business assistant pilot for inquiry intake and indicative quotes. The order-to-dispatch workflow is in preparation.Technical pilotRFQ COPILOTRFQ Preparation CopilotA technical pilot for inquiries, attachments and estimating inputs. People review the data and proposals.Explore the illustrative demoMore independent projects and researchOwn SaaSQMAQuantum Market AnalyzerMy own stock-market analytics SaaS: screening, scoring, backtesting, portfolio analytics, AI explanations and automated research workflows.DataAISaaSAutomationPublishing projectMY PAPERMy Paper / The Wider LensAn autonomous publishing and analysis project with topic planning, research, source checking, AI editorial workflows and automated publishing.Content OpsResearchAutomationConceptNonprofit sectorAI Operations Hub for a nonprofitA concept for a connected digital team handling communication, planning, meetings, documents, knowledge and repetitive administration.NonprofitAgentsOperationsDaily useAI ASSISTANTPersonal sales AI assistantA practical assistant for meeting preparation, email, follow-up, notes, business context and recommended next steps. Voice/phone mode is part of the development.SalesVoiceMemoryAssistantResearch & developmentFORGE FACTORYForge FactoryA research project exploring autonomous product development — from design and implementation to operational and sales steps. It is a lab for agentic workflows.R&DAutonomyAgents Technical demo: select inquiry itemsTry selecting items and downloading a CSV using prepared sample data.PROCELYX DemoSample data⬡Simulate RFQ processingWe will use a prepared technical scenario, steel_structure.step.Run analysisCasesteel_structure.step✓ Illustrative result47components14sheet parts18profiles7items to verifyPartTypeLengthRHS 50×50×3Profile1240 mmRHS 50×50×3Profile890 mmCover plateSheet metal—L40×40×4Angle460 mmDownload selected items (CSV)Safe HTML simulation. No real customer files are uploaded.Show this on my own process → FAQWhat to know before starting Do you only work with manufacturing and technical companies?No. Technical companies are one area where I have deep experience. The same automation principles also apply to services, hospitality, project management, nonprofits, content businesses and internal administration. Do we have to replace our current software?Often not. We first look for ways to connect email, calendars, CRM, documents, accounting or operational systems and add an automation and AI layer on top. Do we need to start with a large project?No. I prefer one concrete process, a small pilot and a measurable result. We expand only what proves useful. Can AI act completely on its own?For routine steps, yes. For sensitive decisions I design permissions, checkpoints and human approval. What will it cost?Pricing depends on the process, integrations and pilot scope. You receive a proposal before work starts. Sending an inquiry does not place a paid order.Will we pay for additional tools?Sometimes, for example for software, hosting or AI model calls. The proposal distinguishes implementation fees from ongoing costs. We agree on services and budget in advance.What about our data and access?Before the pilot we agree on the data, who can access it and which services process it. Do not include passwords or confidential customer documents in the initial contact form.What is handed over and who handles failures?Documentation, access, rights to deliverables and ongoing support are agreed in the proposal. The design also covers failure handling and steps a person can take over. Round-the-clock support is not included automatically. LET’S START WITH ONE PROCESSWhat takes up your time unnecessarily?One example from a typical day is enough. I will get in touch to clarify the situation and agree on the next step. We agree on the scope and price of any work in advance. Emailjarda.vojtasek@procelyx.czTelefon+420 724 796 243 Choose a time that works for you60 minutes online · Tuesday to Friday, 13:00–15:00 (Prague time). Only available times are offered.Book an online meeting ↗Booking opens on Microsoft Bookings. NameE-mailWhat do people do manually today and what would you like to improve?Add company, phone or areaCompany / project (optional)Phone (optional)Area (optional)Not sure yetMarketing & salesOperations & administrationProjects & teamsCustomer care & serviceAI Hub / agentsAnother process WebYour details will be used to respond to your non-binding inquiry. Sending it does not place an order or subscribe you to advertising.Privacy and cookies (Czech) Send inquiry Pro odeslání formuláře zapněte JavaScript. Případně použijte e-mail nebo telefon uvedený vedle formuláře. DemoDemo guidePrepared answers · no live AI×This is a demo guide to our services. Your messages are not sent to Jaroslav. Use the button below to get in touch.What is an AI Hub?What can you automate in sales?How do we start?→Contact Jaroslav Contactjarda.vojtasek@procelyx.cz+420 724 796 243LegalJaroslav VojtášekIČO: 48783447Privacy and cookies (Czech)Website operator (Czech)Business terms (Czech)© 2026 PROCELYX",
+    "domSha256": "901dd30b15a6b6d8cd9b4124a55e83a44cdac3b10cf1236a0952d26aa99f58cb"
+  }
+}

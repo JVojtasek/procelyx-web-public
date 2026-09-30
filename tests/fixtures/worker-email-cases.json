@@ -1,0 +1,9 @@
+{
+  "_comment": "Hraniční e-maily sdílené s testy Workeru (kopie v procelyx-web tests/fixtures). valid: projde Worker i Nexus, uloží se lowercase. lenientButInvalid: projde Worker i schéma Nexus (bez 422), ale přísná kontrola dá email=null a payload.rawEmail. rejected: Worker i Nexus odmítnou (422).",
+  "valid": [
+    { "input": "Jan.Novak@Example.CZ", "stored": "jan.novak@example.cz" },
+    { "input": "info+web@procelyx.cz", "stored": "info+web@procelyx.cz" }
+  ],
+  "lenientButInvalid": ["jan.@x.cz", "a,b@x.cz", "jiří@x.cz", "a..b@x.cz", "jan@x.cz."],
+  "rejected": ["jan@x.cz\r\nBcc: a@b.cz", "<jan@x.cz>", "jan @x.cz", "jan\"@x.cz", "janx.cz"]
+}

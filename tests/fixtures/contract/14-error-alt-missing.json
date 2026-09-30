@@ -1,0 +1,82 @@
+{
+  "name": "14-error-alt-missing",
+  "note": "image slot without alt text in the dictionary",
+  "html": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><img data-slot=\"home.founder.image\" src=\"/images/a.webp\" alt=\"x\"></body></html>",
+  "content": {
+    "i18n": {
+      "cs": {},
+      "en": {}
+    },
+    "site": {
+      "seoTitle": {
+        "cs": "Titulek CZ",
+        "en": "Title EN"
+      },
+      "seoDescription": {
+        "cs": "Popis stránky CZ pro vyhledávače.",
+        "en": "Page description EN."
+      },
+      "email": "info@example.com",
+      "phone": "+420 000 000 000",
+      "founderName": "Jan Novák",
+      "businessId": "12345678"
+    },
+    "media": {
+      "founderImage": {
+        "mediaId": "img-a-webp"
+      }
+    },
+    "library": {
+      "img-a-webp": {
+        "path": "/images/a.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "img-b-jpg": {
+        "path": "/images/b.jpg",
+        "width": 640,
+        "height": 480
+      }
+    }
+  },
+  "manifest": {
+    "schema": "nexus.site.v1",
+    "site": {
+      "baseUrl": "https://example.com",
+      "languages": [
+        "cs",
+        "en"
+      ],
+      "defaultLanguage": "cs"
+    },
+    "pages": [
+      {
+        "id": "home",
+        "path": "/",
+        "file": "public/index.html",
+        "label": "Úvodní stránka",
+        "sections": [
+          {
+            "id": "home.main",
+            "label": "Hlavní",
+            "slots": [
+              {
+                "id": "home.founder.image",
+                "type": "image",
+                "label": "founderImage",
+                "selector": "[data-slot=\"home.founder.image\"]",
+                "mediaKey": "founderImage",
+                "altKey": "founderImage.alt",
+                "tier": "T2",
+                "i18n": true,
+                "derivedAssets": [],
+                "affectsLegal": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expectedError": "alt text founderImage.alt missing for cs"
+}

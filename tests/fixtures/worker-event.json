@@ -1,0 +1,28 @@
+{
+  "type": "WEB_FORM",
+  "idempotencyKey": "5c2f8d41-7aa6-4d5a-83cc-346c85fb3449",
+  "submittedAt": "2026-09-30T08:15:00.000Z",
+  "formKey": "contact",
+  "payload": {
+    "name": "Test uživatel",
+    "email": "customer@example.com",
+    "phone": "+420 000 000 000",
+    "company": "Test firma",
+    "message": "Potřebujeme zlepšit předávání práce.",
+    "area": "Provoz"
+  },
+  "context": {
+    "pageUrl": "https://procelyx.cz/",
+    "referrer": "https://www.google.com/",
+    "utm": {
+      "source": "linkedin",
+      "medium": "social",
+      "campaign": "audit-2026"
+    }
+  },
+  "consent": {
+    "marketing": false,
+    "text": "Údaje použiji k vyřízení vaší nezávazné poptávky. Odesláním nevzniká objednávka ani přihlášení k reklamě.",
+    "version": "2026-10-01"
+  }
+}

@@ -1,0 +1,6 @@
+# Everything needs review by the owner (ruleset: require_code_owner_review).
+* @JVojtasek
+
+# Site content has no code owner: machine PRs (Nexus One) may change only content/**,
+# enforced by content-guard. The line without an owner removes the owner for this path.
+/content/

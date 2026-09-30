@@ -1,0 +1,39 @@
+name: content-guard
+
+# Runs the guard from the BASE branch (pull_request_target). The pull request's code is never checked out
+# or executed: tools/content-guard.mjs reads the PR through the REST API as data. No secrets are used.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    branches: [procelyx-live]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: content-guard-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  content-guard:
+    name: content-guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Install base-branch dependencies
+        run: npm ci
+      - name: Classify the PR and enforce the content/** boundary
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          # The guard is pinned to this head: a newer push or a stale merge ref fails the check.
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node tools/content-guard.mjs

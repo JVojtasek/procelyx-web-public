@@ -1,0 +1,8 @@
+{
+  "note": "Throwaway fixture keys generated only for these tests (private halves were never committed). Signatures cover an arbitrary payload; content-guard only extracts the public key.",
+  "ownerSigningKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJu98udwJo0A/Ly2LIppJA8Ks4A8Zf7ejHNMou/fG+x fixture-owner",
+  "otherSigningKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEg5LlU1+tEcrVC8AIfEnPiFnzse7xC7HRF7YtLOlqmJ fixture-other",
+  "ownerSignature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgwm73y53AmjQD8vLYsimkkDwqzg\nDxl/t6Mc0yi798b7EAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQOgJRO4U3dLwG7LdTTMktpN3YUWmur+e5gHwkBbPjvDRTKaxINXPFN/xoIAL3h5q7C\nBYliicKE80BHHcSO+5+QA=\n-----END SSH SIGNATURE-----\n",
+  "otherSignature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgSDkuVTX60RytULwAh8Sc+IWfOx\n7vELsdEXti0s6WqYkAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5\nAAAAQMMXR733FmQt01VfircVgrbhk5XYKt0OQUGuHJdZVMnjndu5BAFVUfa8qj23dheBgy\nAcq1AOLvgyOsOxonv/SAU=\n-----END SSH SIGNATURE-----\n",
+  "pgpSignature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJfixture\n-----END PGP SIGNATURE-----\n"
+}

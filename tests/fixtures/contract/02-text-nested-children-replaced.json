@@ -1,0 +1,83 @@
+{
+  "name": "02-text-nested-children-replaced",
+  "note": "same as textContent in the browser: child elements are replaced by the text",
+  "html": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><a href=\"#c\" data-t=\"cta\"><b>Old</b> text</a></body></html>",
+  "content": {
+    "i18n": {
+      "cs": {
+        "cta": "Napište mi"
+      },
+      "en": {
+        "cta": "Write to me"
+      }
+    },
+    "site": {
+      "seoTitle": {
+        "cs": "Titulek CZ",
+        "en": "Title EN"
+      },
+      "seoDescription": {
+        "cs": "Popis stránky CZ pro vyhledávače.",
+        "en": "Page description EN."
+      },
+      "email": "info@example.com",
+      "phone": "+420 000 000 000",
+      "founderName": "Jan Novák",
+      "businessId": "12345678"
+    },
+    "media": {},
+    "library": {
+      "img-a-webp": {
+        "path": "/images/a.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "img-b-jpg": {
+        "path": "/images/b.jpg",
+        "width": 640,
+        "height": 480
+      }
+    }
+  },
+  "manifest": {
+    "schema": "nexus.site.v1",
+    "site": {
+      "baseUrl": "https://example.com",
+      "languages": [
+        "cs",
+        "en"
+      ],
+      "defaultLanguage": "cs"
+    },
+    "pages": [
+      {
+        "id": "home",
+        "path": "/",
+        "file": "public/index.html",
+        "label": "Úvodní stránka",
+        "sections": [
+          {
+            "id": "home.main",
+            "label": "Hlavní",
+            "slots": [
+              {
+                "id": "home.main.cta",
+                "key": "cta",
+                "type": "text",
+                "label": "cta",
+                "selector": "[data-slot=\"home.main.cta\"]",
+                "minLength": 1,
+                "maxLength": 200,
+                "tier": "T2",
+                "i18n": true,
+                "derivedAssets": [],
+                "affectsLegal": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expectedHtml": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><a href=\"#c\" data-t=\"cta\" data-slot=\"home.main.cta\">Napište mi</a></body></html>"
+}

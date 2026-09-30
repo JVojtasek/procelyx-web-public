@@ -1,0 +1,67 @@
+name: web-checks
+
+on:
+  pull_request:
+  push:
+    branches: [procelyx-live]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web-checks:
+    name: web-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Public scan (tree + commit metadata)
+        # Commits scanned: on pull_request only this PR's commits (base..head) plus the base history, never other
+        # branches; on push the pushed history. GitHub's synthetic test merge commit is never part of either.
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            node scripts/scan-public.mjs --commits --rev "$BASE_SHA..$HEAD_SHA" --rev "$BASE_SHA"
+          else
+            node scripts/scan-public.mjs --commits --rev HEAD
+          fi
+      - run: npm run build
+      - name: Committed media library matches public/images
+        # content-guard reads content/media-library.json from the PR as data and machine PRs may not change it,
+        # so a stale committed library would block every Nexus PR after merge. The build regenerates it.
+        run: |
+          if ! git diff --exit-code -- content/media-library.json; then
+            echo "::error file=content/media-library.json::content/media-library.json is out of date - run npm run build and commit it"
+            exit 1
+          fi
+      - run: npm test
+      - run: npm run check
+      - name: One-off migration check (only when tools/extract-i18n.mjs changes)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if git diff --name-only "$BASE_SHA" HEAD | grep -qx 'tools/extract-i18n.mjs'; then
+            npm run test:migration
+          else
+            echo "tools/extract-i18n.mjs unchanged - migration check skipped"
+          fi
+      - name: Worker bundle (dry run, no deploy)
+        # build, test and check already ran above: the wrangler custom build only rebuilds.
+        env:
+          PROCELYX_SKIP_GATE: '1'
+        run: npx wrangler deploy --dry-run --outdir "$RUNNER_TEMP/worker-dry-run"

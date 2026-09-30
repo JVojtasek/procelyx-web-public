@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://procelyx.cz/schemas/i18n.schema.json",
+  "title": "content/i18n/{cs,en}.json — flat dictionary key -> plain text (no HTML)",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^[A-Za-z][A-Za-z0-9]{0,40}(\\.alt)?$": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "^[^<>]*$" }
+  }
+}

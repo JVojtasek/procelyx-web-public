@@ -1,0 +1,83 @@
+{
+  "name": "06-duplicate-key-both-marked",
+  "note": "one key used twice (desktop and mobile navigation): both elements change and carry the slot",
+  "html": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><nav><a data-t=\"nav1\">a</a></nav><div id=\"mobile\"><a data-t=\"nav1\">a</a></div></body></html>",
+  "content": {
+    "i18n": {
+      "cs": {
+        "nav1": "Služby"
+      },
+      "en": {
+        "nav1": "Services"
+      }
+    },
+    "site": {
+      "seoTitle": {
+        "cs": "Titulek CZ",
+        "en": "Title EN"
+      },
+      "seoDescription": {
+        "cs": "Popis stránky CZ pro vyhledávače.",
+        "en": "Page description EN."
+      },
+      "email": "info@example.com",
+      "phone": "+420 000 000 000",
+      "founderName": "Jan Novák",
+      "businessId": "12345678"
+    },
+    "media": {},
+    "library": {
+      "img-a-webp": {
+        "path": "/images/a.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "img-b-jpg": {
+        "path": "/images/b.jpg",
+        "width": 640,
+        "height": 480
+      }
+    }
+  },
+  "manifest": {
+    "schema": "nexus.site.v1",
+    "site": {
+      "baseUrl": "https://example.com",
+      "languages": [
+        "cs",
+        "en"
+      ],
+      "defaultLanguage": "cs"
+    },
+    "pages": [
+      {
+        "id": "home",
+        "path": "/",
+        "file": "public/index.html",
+        "label": "Úvodní stránka",
+        "sections": [
+          {
+            "id": "home.main",
+            "label": "Hlavní",
+            "slots": [
+              {
+                "id": "home.nav.nav1",
+                "key": "nav1",
+                "type": "text",
+                "label": "nav1",
+                "selector": "[data-slot=\"home.nav.nav1\"]",
+                "minLength": 1,
+                "maxLength": 200,
+                "tier": "T3",
+                "i18n": true,
+                "derivedAssets": [],
+                "affectsLegal": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expectedHtml": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><nav><a data-t=\"nav1\" data-slot=\"home.nav.nav1\">Služby</a></nav><div id=\"mobile\"><a data-t=\"nav1\" data-slot=\"home.nav.nav1\">Služby</a></div></body></html>"
+}

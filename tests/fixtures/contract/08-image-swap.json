@@ -1,0 +1,86 @@
+{
+  "name": "08-image-swap",
+  "note": "changing mediaId swaps the picture and its dimensions",
+  "html": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><img class=\"caseImage\" data-slot=\"home.cases.1.image\" src=\"/images/a.webp\" alt=\"A\" width=\"1200\" height=\"800\" data-alt=\"caseImage1.alt\"></body></html>",
+  "content": {
+    "i18n": {
+      "cs": {
+        "caseImage1.alt": "Nový popis"
+      },
+      "en": {
+        "caseImage1.alt": "New alt"
+      }
+    },
+    "site": {
+      "seoTitle": {
+        "cs": "Titulek CZ",
+        "en": "Title EN"
+      },
+      "seoDescription": {
+        "cs": "Popis stránky CZ pro vyhledávače.",
+        "en": "Page description EN."
+      },
+      "email": "info@example.com",
+      "phone": "+420 000 000 000",
+      "founderName": "Jan Novák",
+      "businessId": "12345678"
+    },
+    "media": {
+      "caseImage1": {
+        "mediaId": "img-b-jpg"
+      }
+    },
+    "library": {
+      "img-a-webp": {
+        "path": "/images/a.webp",
+        "width": 1200,
+        "height": 800
+      },
+      "img-b-jpg": {
+        "path": "/images/b.jpg",
+        "width": 640,
+        "height": 480
+      }
+    }
+  },
+  "manifest": {
+    "schema": "nexus.site.v1",
+    "site": {
+      "baseUrl": "https://example.com",
+      "languages": [
+        "cs",
+        "en"
+      ],
+      "defaultLanguage": "cs"
+    },
+    "pages": [
+      {
+        "id": "home",
+        "path": "/",
+        "file": "public/index.html",
+        "label": "Úvodní stránka",
+        "sections": [
+          {
+            "id": "home.main",
+            "label": "Hlavní",
+            "slots": [
+              {
+                "id": "home.cases.1.image",
+                "type": "image",
+                "label": "caseImage1",
+                "selector": "[data-slot=\"home.cases.1.image\"]",
+                "mediaKey": "caseImage1",
+                "altKey": "caseImage1.alt",
+                "tier": "T2",
+                "i18n": true,
+                "derivedAssets": [],
+                "affectsLegal": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expectedHtml": "<!DOCTYPE html><html lang=\"cs\"><head><meta charset=\"utf-8\"></head><body><img class=\"caseImage\" data-slot=\"home.cases.1.image\" src=\"/images/b.jpg\" alt=\"Nový popis\" width=\"640\" height=\"480\" data-alt=\"caseImage1.alt\"></body></html>"
+}

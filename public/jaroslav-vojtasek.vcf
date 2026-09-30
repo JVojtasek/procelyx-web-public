@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Vojtášek;Jaroslav;;;
+FN:Jaroslav Vojtášek
+ORG:PROCELYX
+TEL;TYPE=WORK,VOICE:+420724796243
+EMAIL;TYPE=WORK:jarda.vojtasek@procelyx.cz
+URL:https://procelyx.cz/
+END:VCARD
