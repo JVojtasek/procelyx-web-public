@@ -12,6 +12,7 @@ souboru v `src/lib/site/contract/README.md`. Obě strany validují **striktně**
 | `content/site.json` | identita a SEO (`email`, `phone`, `founderName`, `founderTitle`, `seoTitle`, `seoDescription`, `ogImage`, `chatDemoEnabled`, `businessId`, `businessSeat`) | `seoTitle`, `seoDescription`, `founderTitle` přes sloty; identita jen vývoj |
 | `content/media.json` | `{ "<mediaKey>": { "mediaId": "<id>" } }` — který obrázek z knihovny slot ukazuje | obrázkové sloty (Nexus) |
 | `content/media-library.json` | `{ "<mediaId>": { "path", "width", "height" } }` — **generuje build** ze všech rastrových souborů `public/images/**` | nikdo ručně |
+| `content/articles/<slug>.json` | článek publikovaný z Nexusu — **samostatný kontrakt** `contract/nexus.article.v1.md` (schéma `schemas/article.schema.json`) | Nexus (přidat, změnit, smazat po schválení člověkem) |
 
 `mediaId` = `img-` + cesta pod `/images/` malými písmeny, `/` → `--`, ostatní znaky → `-`
 (např. `/images/articles/a-b.webp` → `img-articles--a-b-webp`). SVG se do knihovny nedostane (na web jde jen rastr).

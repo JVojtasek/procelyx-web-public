@@ -19,6 +19,8 @@ Obsah úvodní stránky je jako data v `content/` (kontrakt `contract/nexus.site
 
 Po úpravě spusťte `npm run build` (obsahuje validaci `tools/validate-content.mjs`). Články jsou v `public/clanky/`.
 
+Články z Nexus One (Redakce › Články) jsou data v `content/articles/<slug>.json` (kontrakt `contract/nexus.article.v1.md`). Nexus je přidává přes pull request z větve `nexus-chg-*` po schválení člověkem; build z nich vyrobí stránku, kartu ve výpisu `/clanky/` a URL v `sitemap.xml`. **Vygenerované stránky nekommitujte** (složky `public/clanky/<slug>/` článků z Nexusu, karty v `public/clanky/index.html` a řádky `<!-- nexus -->` v `public/sitemap.xml`; po lokálním buildu je vraťte `git restore public/clanky/index.html public/sitemap.xml` a smažte). Cesty se neignorují, aby šel normálně přidat i ručně psaný článek; commit vygenerované stránky odmítne test v `tests/articles.test.js`. Stažení článku z webu = smazání souboru `content/articles/<slug>.json` (lidský PR, nebo návrat změny v Nexusu); stránka, karta i sitemap zmizí při dalším buildu.
+
 Právní texty mají zdroj v `tools/legal-pages.mjs`. Po úpravě spusťte `node tools/legal-pages.mjs` a `npm run build`. Podmínky jsou české pro jednotlivě sjednávané B2B služby. Před spotřebitelskými objednávkami či placenými workshopy připravte odpovídající spotřebitelské informace a smluvní postup.
 
 Infografiky mají zdroj v `tools/article-graphics.mjs`; generují se příkazem `node tools/article-graphics.mjs`. Web používá WebP, JPEG slouží ke sdílení, SVG je editovatelný zdroj. Nepotřebují placenou obrázkovou službu.

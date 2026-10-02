@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { buildMediaLibrary, loadContent } from './lib/site-content.mjs';
 import { applyContent } from './inject.mjs';
 import { validateContent } from './validate-content.mjs';
+import { renderArticles } from './lib/articles.mjs';
 const root = resolve(import.meta.dirname, '..');
 // Content lives in content/** (texts, identity, media, manifest nexus.site.v1). The media library is
 // generated from public/images (raster files only), so image slots can point only to existing files.
@@ -13,6 +14,9 @@ const content = loadContent(root);
 const problems = validateContent(root, content);
 if (problems.length) { console.error('Content validation failed:\n- '+problems.join('\n- ')); process.exit(1); }
 const config = content.site;
+// Articles published from Nexus One (content/articles/*.json, contract nexus.article.v1): pages, list cards and sitemap entries are generated here,
+// before the post-processing below, and are not committed (Workers Builds renders them on every deploy).
+renderArticles(root, {site: config, library: content.library});
 const manifestPages = new Map(content.manifest.pages.map(page => [page.file, page]));
 const vcardEscape=value=>String(value).replaceAll('\\','\\\\').replaceAll('\n','\\n').replaceAll(';','\\;').replaceAll(',','\\,');
 const nameParts=config.founderName.trim().split(/\s+/);
@@ -60,7 +64,7 @@ async function walk(dir) {
       // app.js reads the dictionaries from i18n.js, which must load right before it.
       const appScript = $('script[src^="/app.js"]');
       if (appScript.length && !$('script[src^="/i18n.js"]').length) appScript.before('<script src="/i18n.js"></script>');
-      $('meta[property="og:image"]').each((_,el) => { if (!$(el).attr('content')?.includes('/articles/')) $(el).attr('content','https://procelyx.cz'+config.ogImage); });
+      $('meta[property="og:image"]').each((_,el) => { if (!$(el).attr('content')?.includes('/articles/') && !$('meta[name="nexus-article"]').length) $(el).attr('content','https://procelyx.cz'+config.ogImage); });
       $('script[type="application/ld+json"]').each((_,el) => {
         const data = JSON.parse($(el).text());
         if (data['@type'] === 'ProfessionalService') { data.email=config.email;data.telephone=config.phone.replaceAll(' ','');data.founder.name=config.founderName; }
