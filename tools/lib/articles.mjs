@@ -87,6 +87,11 @@ export function staticArticleSlugs(root) {
   return out;
 }
 
+/** `related` of an article without the entries that point to a missing article (hand-written or from Nexus). */
+export function relatedFor(data, existingSlugs) {
+  return data.related.filter(([slug]) => existingSlugs.has(slug));
+}
+
 /** Cross checks and schema validation of all article files. Returns error strings (empty = OK). */
 export function validateArticles(root, articles, library, schema) {
   const errors = [];
@@ -109,7 +114,8 @@ export function validateArticles(root, articles, library, schema) {
     for (const [slug] of d.related) {
       if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) errors.push(`${where}: related slug ${slug} is invalid`);
       else if (slug === a.slug) errors.push(`${where}: related points to the article itself`);
-      else if (!slugs.has(slug) && !staticSlugs.has(slug)) errors.push(`${where}: related article ${slug} does not exist`);
+      // A related article that does not exist (any more) is NOT an error: deleting article B must not break the build of article A.
+      // The link is dropped when the page is rendered (renderArticles, warning), see relatedFor().
       if (seen.has(slug)) errors.push(`${where}: related slug ${slug} is repeated`);
       seen.add(slug);
     }
@@ -199,7 +205,12 @@ export function applyArticlesToSitemap(xml, items) {
  */
 export function renderArticles(root, {site, library}) {
   const articles = loadArticleFiles(root).filter((a) => a.data);
-  const items = articles.map((a) => ({slug: a.slug, data: a.data, image: articleImage(root, a.data, library)}));
+  const existing = new Set([...articles.map((a) => a.slug), ...staticArticleSlugs(root)]);
+  const items = articles.map((a) => {
+    const related = relatedFor(a.data, existing);
+    if (related.length !== a.data.related.length) console.warn(`articles: ${a.file}: dropped ${a.data.related.length - related.length} related link(s) to a missing article`);
+    return {slug: a.slug, data: {...a.data, related}, image: articleImage(root, a.data, library)};
+  });
   const keep = new Set(items.map((i) => i.slug));
   const clanky = resolve(root, 'public/clanky');
   if (existsSync(clanky)) {

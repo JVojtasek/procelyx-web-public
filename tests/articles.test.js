@@ -2,7 +2,7 @@
 // the build in a temporary workspace (idempotent, removal), check-site on the generated pages and the machine PR path rule.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, existsSync} from 'node:fs';
+import {cpSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync, existsSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {load} from 'cheerio';
@@ -53,11 +53,12 @@ test('body HTML: the allowlist holds, everything else is rejected', () => {
   assert.equal(safeUrl('https://user:pw@example.com/'), null);
 });
 
-test('cross checks: slug must match the file, must not collide with a hand-written article, image in the library, related articles must exist', () => {
+test('cross checks: slug must match the file, must not collide with a hand-written article, image in the library, a related link to a missing article is tolerated, repeated or self links are not', () => {
   assert.ok(errorsFor(article({slug: 'jiny-slug-clanku'})).some((e) => /differs from the file name/.test(e)));
   assert.ok(errorsFor(article({slug: 'jak-najit-uzka-hrdla-ve-firme', related: []}), 'jak-najit-uzka-hrdla-ve-firme.json').some((e) => /collides with a hand-written article/.test(e)));
   assert.ok(errorsFor(article({image: {mediaId: 'img-neexistuje-webp', alt: 'Alt text obrázku'}})).some((e) => /media library/.test(e)));
-  assert.ok(errorsFor(article({related: [['neexistuje-clanek', 'Neexistuje']]})).some((e) => /does not exist/.test(e)));
+  assert.deepEqual(errorsFor(article({related: [['neexistuje-clanek', 'Neexistuje']]})), [], 'deleting article B must not break article A');
+  assert.ok(errorsFor(article({related: [['jak-najit-uzka-hrdla-ve-firme', 'Úzká hrdla'], ['jak-najit-uzka-hrdla-ve-firme', 'Úzká hrdla znovu']]})).some((e) => /repeated/.test(e)));
   assert.ok(errorsFor(article({related: [['jak-vybrat-prvni-proces', 'Sám sebe']]})).some((e) => /itself/.test(e)));
   assert.ok(errorsFor(article({datePublished: '2026-10-08', dateModified: '2026-10-06'})).some((e) => /before datePublished/.test(e)));
   assert.ok(errorsFor(article({cta: {key: 'x', title: 'Titulek výzvy', text: 'Text výzvy který je dost dlouhý.', label: 'Klik', href: 'http://evil.example'}})).length > 0);
@@ -94,13 +95,15 @@ test('list page and sitemap: idempotent, newest first, cards removed together wi
     {slug: 'prvni-clanek-redakce', data: article({slug: 'prvni-clanek-redakce', datePublished: '2026-10-01', dateModified: '2026-10-01'}), image: null},
     {slug: 'druhy-clanek-redakce', data: article({slug: 'druhy-clanek-redakce', datePublished: '2026-10-05', dateModified: '2026-10-05'}), image: {path: '/images/a.webp', width: 10, height: 10, alt: 'x', ogPath: '/images/a.webp'}},
   ];
-  const index = readFileSync(resolve(root, 'public/clanky/index.html'), 'utf8');
+  // The real files may already carry generated cards / URLs (a build ran before the tests, or real articles exist): compare against the stripped base.
+  const index = applyArticlesToIndex(readFileSync(resolve(root, 'public/clanky/index.html'), 'utf8'), []);
   const once = applyArticlesToIndex(index, items);
   assert.equal(applyArticlesToIndex(once, items), once, 'idempotent');
   const slugs = load(once)('article.articleCard').toArray().map((e) => load(once)(e).find('a').last().attr('href'));
   assert.deepEqual(slugs.slice(0, 2), ['/clanky/druhy-clanek-redakce/', '/clanky/prvni-clanek-redakce/']);
   assert.equal(applyArticlesToIndex(once, []).includes('data-nexus-article'), false);
-  const sitemap = readFileSync(resolve(root, 'public/sitemap.xml'), 'utf8');
+  const sitemap = applyArticlesToSitemap(readFileSync(resolve(root, 'public/sitemap.xml'), 'utf8'), []);
+  assert.doesNotMatch(sitemap, /<!-- nexus -->/);
   const s1 = applyArticlesToSitemap(sitemap, items);
   assert.equal(applyArticlesToSitemap(s1, items), s1);
   assert.ok(s1.includes('<loc>https://procelyx.cz/clanky/druhy-clanek-redakce/</loc>'));
@@ -113,7 +116,23 @@ function workspace() {
   mkdirSync(parent, {recursive: true});
   const ws = mkdtempSync(join(parent, 'articles-test-'));
   for (const dir of ['tools', 'schemas', 'content', 'public']) cpSync(join(root, dir), join(ws, dir), {recursive: true});
+  isolate(ws);
   return ws;
+}
+
+// The tests must not depend on whether real articles exist in the repository (content/articles/*.json) or on a build having
+// run before them (tools/wrangler-build.mjs runs build, then npm test): a copied workspace starts WITHOUT any Nexus article.
+function isolate(ws) {
+  rmSync(join(ws, 'content/articles'), {recursive: true, force: true});
+  const clanky = join(ws, 'public/clanky');
+  for (const entry of readdirSync(clanky, {withFileTypes: true})) {
+    const page = join(clanky, entry.name, 'index.html');
+    if (entry.isDirectory() && existsSync(page) && readFileSync(page, 'utf8').includes('name="nexus-article"')) rmSync(join(clanky, entry.name), {recursive: true, force: true});
+  }
+  const index = join(clanky, 'index.html');
+  writeFileSync(index, applyArticlesToIndex(readFileSync(index, 'utf8'), []));
+  const sitemap = join(ws, 'public/sitemap.xml');
+  writeFileSync(sitemap, applyArticlesToSitemap(readFileSync(sitemap, 'utf8'), []));
 }
 const run = (ws, script) => spawnSync(process.execPath, [script], {cwd: ws, encoding: 'utf8', env: {...process.env, CI: 'true'}});
 const write = (ws, slug, data) => {
@@ -155,6 +174,28 @@ test('build: article page, list card and sitemap URL appear; a second build chan
   }
 });
 
+test('deleting article B drops the related link in article A (build passes, warning, no dead link in the page)', () => {
+  const ws = workspace();
+  try {
+    write(ws, 'clanek-b-redakce', article({slug: 'clanek-b-redakce', nexusId: 'cmartb', related: []}));
+    write(ws, 'clanek-a-redakce', article({slug: 'clanek-a-redakce', nexusId: 'cmarta', related: [['clanek-b-redakce', 'Článek B'], ['jak-najit-uzka-hrdla-ve-firme', 'Ručně psaný']]}));
+    let r = run(ws, 'tools/build.mjs');
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.ok(readFileSync(join(ws, 'public/clanky/clanek-a-redakce/index.html'), 'utf8').includes('href="/clanky/clanek-b-redakce/"'));
+    rmSync(join(ws, 'content/articles/clanek-b-redakce.json'));
+    r = run(ws, 'tools/build.mjs');
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stderr + r.stdout, /dropped 1 related link/);
+    const html = readFileSync(join(ws, 'public/clanky/clanek-a-redakce/index.html'), 'utf8');
+    assert.doesNotMatch(html, /clanek-b-redakce/);
+    assert.ok(html.includes('href="/clanky/jak-najit-uzka-hrdla-ve-firme/"'), 'the hand-written related article stays');
+    assert.equal(run(ws, 'tools/check-site.mjs').status, 0);
+    assert.equal(run(ws, 'tools/validate-content.mjs').status, 0);
+  } finally {
+    rmSync(ws, {recursive: true, force: true});
+  }
+});
+
 test('build refuses an invalid article and a slug of a hand-written article; hand-written pages stay untouched', () => {
   const ws = workspace();
   try {
@@ -181,4 +222,40 @@ test('machine PRs (Nexus) may add, change and delete content/articles/*.json and
   assert.equal(checkMachinePaths([{filename: 'public/clanky/x/index.html', status: 'added'}]).length, 1);
   assert.equal(checkMachinePaths([{filename: 'tools/lib/articles.mjs', status: 'modified'}]).length, 1);
   assert.equal(checkMachinePaths([{filename: '.github/workflows/web-checks.yml', status: 'modified'}]).length, 1);
+});
+
+// Regression: after the FIRST real article (content/articles/x.json) the whole release gate (build, npm test, check) must stay green.
+// tools/wrangler-build.mjs runs exactly this sequence; a failing test there freezes the publication in Nexus.
+test('release gate with a real article in the repository: build, the whole test suite and check pass', {skip: process.env.ARTICLES_NESTED === '1' && 'nested run'}, () => {
+  const parent = join(root, 'node_modules', '.cache');
+  mkdirSync(parent, {recursive: true});
+  const ws = mkdtempSync(join(parent, 'articles-gate-'));
+  try {
+    for (const entry of ['tools', 'schemas', 'content', 'public', 'tests', 'scripts', 'contract', 'src', 'integrations', 'package.json']) {
+      if (existsSync(join(root, entry))) cpSync(join(root, entry), join(ws, entry), {recursive: true});
+    }
+    isolate(ws);
+    write(ws, 'jak-vybrat-prvni-proces', article());
+    const env = {...process.env, CI: 'true', ARTICLES_NESTED: '1'};
+    const sh = (args) => spawnSync(process.execPath, args, {cwd: ws, encoding: 'utf8', env});
+    let r = sh(['tools/build.mjs']);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.ok(existsSync(join(ws, 'public/clanky/jak-vybrat-prvni-proces/index.html')));
+    r = sh(['--test', ...readdirSync(join(ws, 'tests')).filter((f) => f.endsWith('.test.js')).map((f) => `tests/${f}`)]);
+    assert.equal(r.status, 0, (r.stdout + r.stderr).split(String.fromCharCode(10)).filter((l) => /not ok|# fail|Error/.test(l)).slice(0, 12).join(String.fromCharCode(10)));
+    r = sh(['tools/check-site.mjs']);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+  } finally {
+    rmSync(ws, {recursive: true, force: true});
+  }
+});
+
+test('generated Nexus article pages are never tracked in git (build output); hand-written pages are; the tracked list page and sitemap carry no generated entries', () => {
+  const r = spawnSync('git', ['ls-files', 'public/clanky'], {cwd: root, encoding: 'utf8'});
+  if (r.status !== 0) return; // not a git checkout (e.g. a source archive)
+  for (const f of r.stdout.split(String.fromCharCode(10)).filter((x) => x.endsWith('/index.html'))) {
+    assert.doesNotMatch(readFileSync(join(root, f), 'utf8'), /name="nexus-article"/, `${f} is generated build output and must not be committed`);
+  }
+  assert.doesNotMatch(readFileSync(join(root, 'public/clanky/index.html'), 'utf8'), /data-nexus-article/, 'committed list page must not contain generated cards (git restore after a local build)');
+  assert.doesNotMatch(readFileSync(join(root, 'public/sitemap.xml'), 'utf8'), /<!-- nexus -->/, 'committed sitemap must not contain generated URLs (git restore after a local build)');
 });

@@ -18,7 +18,7 @@ Schéma: `schemas/article.schema.json` (přítomnost tohoto souboru v repu je pr
 | `title`, `seoTitle`, `description`, `lead`, `teaser`, `category`, `typeLabel` | prostý text (bez `<` a `>`), délky ve schématu |
 | `bodyHtml` | tělo článku, **jen povolená sada značek** (viz níže) |
 | `faq` | `[{q, a}]`, nejvýš 6; web vyrobí sekci „Časté otázky“ a JSON-LD `FAQPage` |
-| `related` | `[[slug, popisek]]`, nejvýš 6, slugy musí existovat (ručně psaný i Nexus článek) |
+| `related` | `[[slug, popisek]]`, nejvýš 6, slug ukazuje na ručně psaný nebo Nexus článek; odkaz na článek, který už neexistuje (smazaný, staženou publikaci), build **vynechá s varováním** a nic nepadá |
 | `image` | `{mediaId, alt}` z knihovny webu (`content/media-library.json`), nebo `null`; nové soubory nahrává až R1b |
 | `cta` | `{key, title, text, label, href}` (`href` vlastní stránka `/…` nebo `https://…`), nebo `null` |
 | `keywords`, `aiNote` | štítky a poznámka o AI (nebo `null`) |
@@ -46,7 +46,7 @@ Slug nesmí kolidovat s ručně psaným článkem (`public/clanky/<slug>/` bez z
 
 ## Validace a ochrana (`tools/validate-content.mjs`, `content-guard`)
 
-- schéma + křížové kontroly: slug = název souboru, kolize s ručním článkem, obrázek v knihovně, existující `related`, datumy, odkaz výzvy;
+- schéma + křížové kontroly: slug = název souboru, kolize s ručním článkem, obrázek v knihovně, opakované a vlastní `related`, datumy, odkaz výzvy;
 - strojový PR (GitHub App Nexusu) smí **přidat, změnit nebo smazat jen `content/articles/*.json`** (a dál jen hodnoty slotů T2/T3); cokoli mimo `content/**` je chyba;
 - `check-site.mjs` bere články z JSON jako ostatní: jeden H1, jedinečný titulek, popis, canonical, rozměry a alt obrázků, odkazy, sitemap.
 
