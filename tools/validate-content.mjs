@@ -14,11 +14,12 @@ import {isDeepStrictEqual} from 'node:util';
 import {load} from 'cheerio';
 import {validate} from './lib/json-schema-lite.mjs';
 import {buildMediaLibrary, loadContent, allSlots} from './lib/site-content.mjs';
+import {loadArticleFiles, validateArticles} from './lib/articles.mjs';
 
 const toolsRoot = resolve(import.meta.dirname, '..');
 const schema = (name) => JSON.parse(readFileSync(resolve(toolsRoot, 'schemas', name), 'utf8'));
 const EDITABLE_TIERS = new Set(['T2', 'T3']);
-const ALLOWED_FILES = [/^site\.json$/, /^manifest\.json$/, /^media\.json$/, /^media-library\.json$/, /^i18n\/(cs|en)\.json$/, /^media-src\/[a-z0-9-]+\.svg$/];
+const ALLOWED_FILES = [/^site\.json$/, /^manifest\.json$/, /^media\.json$/, /^media-library\.json$/, /^i18n\/(cs|en)\.json$/, /^media-src\/[a-z0-9-]+\.svg$/, /^articles\/[a-z0-9]+(?:-[a-z0-9]+)*\.json$/];
 
 // SVG allowlist (spec §3.4): only these elements and attributes, links only to fragments inside the same file.
 // No <script>, <style>, <a>, <image>, <foreignObject>, animation (<set>, <animate…>), event handlers or external URLs.
@@ -121,6 +122,10 @@ export function validateContent(root, content = loadContent(root), {base} = {}) 
   const generated = buildMediaLibrary(root);
   if (!isDeepStrictEqual(library, generated)) errors.push('content/media-library.json: does not match public/images (run npm run build)');
   for (const [key, {mediaId}] of Object.entries(media)) if (!Object.hasOwn(library, mediaId)) errors.push(`content/media.json: ${key}.mediaId ${mediaId} is not in the media library`);
+
+  // Articles published from Nexus One (content/articles/*.json, contract nexus.article.v1): strict schema,
+  // allowlisted body HTML, own links only, images from the media library.
+  push('content/articles', validateArticles(root, loadArticleFiles(root), library, schema('article.schema.json')));
 
   // Manifest cross checks.
   const slots = allSlots(manifest);

@@ -45,6 +45,7 @@ Veřejný web https://procelyx.cz (Cloudflare Worker + statická aktiva). Repozi
 
 ## Struktura
 - `content/` — obsah úvodní stránky jako data (texty cs/en, identita a SEO, obrázkové sloty, manifest slotů); kontrakt `contract/nexus.site.v1.md`, schémata `schemas/`, injekce `tools/inject.mjs`, validace `tools/validate-content.mjs`
+- `content/articles/<slug>.json` — články publikované z Nexus One (kontrakt `contract/nexus.article.v1.md`, schéma `schemas/article.schema.json`); build z nich vyrobí `public/clanky/<slug>/index.html`, kartu ve výpisu a URL v sitemap (`tools/lib/articles.mjs`). Vygenerované stránky se **nekommitují** (`.gitignore`), 21 ručně psaných článků v `public/clanky/` se nemění; slug nesmí kolidovat s ručním článkem. Strojový PR smí přidat, změnit nebo smazat jen tyto soubory.
 - `public/` — HTML, CSS, JS a obrázky webu (build je přepisuje na místě; `i18n.js` generuje build z `content/i18n`)
 - `src/` — Worker (kontaktní formulář, přeposílání poptávek do Nexus One)
 - `tools/` — build, kontroly, generátory stránek

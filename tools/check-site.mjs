@@ -23,8 +23,14 @@ for(const file of files){
  });
  if(file.replaceAll('\\','/').match(/^clanky\/[^/]+\/index.html$/)){
    articles++;assert.ok(!$('meta[name="robots"]').attr('content')?.includes('noindex'));
-   assert.ok($('meta[property="og:image"]').attr('content')?.includes('/images/articles/'),`${file}: article image`);
-   assert.equal($('.articleVisual img').length,1,`${file}: hero image`);
+   if($('meta[name="nexus-article"]').length){
+     // Published from Nexus One (content/articles/*.json): the image is optional, but a shared image must exist on this site.
+     assert.ok($('meta[property="og:image"]').attr('content')?.startsWith('https://procelyx.cz/images/'),`${file}: og:image`);
+     assert.ok($('.articleVisual img').length<=1,`${file}: more than one hero image`);
+   }else{
+     assert.ok($('meta[property="og:image"]').attr('content')?.includes('/images/articles/'),`${file}: article image`);
+     assert.equal($('.articleVisual img').length,1,`${file}: hero image`);
+   }
  }
  const origin='https://procelyx.cz/'+file.replaceAll('\\','/').replace(/index\.html$/,'');
  for(const el of $('a[href],img[src],script[src],link[href]').toArray()){
