@@ -73,6 +73,7 @@ document.querySelector('#leadForm').onsubmit=async e=>{
     if(!response.ok||data.ok!==true)throw new Error(response.status===429?'rate_limited':'submit_failed');
     msg.className='formok';
     msg.textContent=lang==='cs'?'Děkuji, poptávka byla přijata k odeslání. Ozvu se vám co nejdříve.':'Thank you. Your inquiry has been accepted for sending. I will get back to you shortly.';
+    window.PROCELYX_ANALYTICS?.capture('contact_form_success');
     form.reset();submissionId=crypto.randomUUID();
   }catch(err){
     msg.className='formerror';

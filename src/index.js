@@ -1,4 +1,5 @@
 import { handleContact } from './contact.js';
+import { analyticsConfig } from './analytics.js';
 import { nexusConfigured, drainNexusQueue } from './nexus.js';
 export default {
   async fetch(request, env, ctx) {
@@ -8,6 +9,7 @@ export default {
       url.protocol = 'https:';
       return Response.redirect(url.toString(), 308);
     }
+    if (url.pathname === '/api/analytics-config' && request.method === 'GET') return analyticsConfig(env);
     if (url.pathname === '/api/contact') return handleContact(request, env, fetch, ctx);
     return env.ASSETS.fetch(request);
   },

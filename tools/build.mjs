@@ -32,7 +32,7 @@ await writeFile(resolve(root,'public/site-config.js'),'window.PROCELYX_CONFIG = 
 // Both dictionaries for the language switch in app.js; Czech is also injected straight into the HTML.
 await writeFile(resolve(root,'public/i18n.js'),'window.PROCELYX_I18N = '+JSON.stringify(content.i18n).replaceAll('<','\\u003c')+';\n');
 const versions={};
-for(const name of ['app.js','site-config.js','i18n.js','styles.css','polish.css','clanky/article.css']) {
+for(const name of ['app.js','analytics.js','site-config.js','i18n.js','styles.css','polish.css','clanky/article.css']) {
   versions[name]=createHash('sha256').update(await readFile(resolve(root,'public',name))).digest('hex').slice(0,12);
 }
 async function walk(dir) {
@@ -41,6 +41,7 @@ async function walk(dir) {
     if (entry.isDirectory()) await walk(path);
     else if (entry.name.endsWith('.html')) {
       const $ = load(await readFile(path,'utf8'));
+      if (!$('script[src^="/analytics.js"]').length) $('body').append('<script src="/analytics.js" defer></script>');
       // Brand mark is shared by the home page, articles and legal pages.
       $('header .brand,footer .brand').each((_,el) => {
         const brand = $(el);

@@ -8,6 +8,7 @@ import {readFileSync, readdirSync, existsSync, rmSync, writeFileSync, mkdirSync}
 import {resolve, join} from 'node:path';
 import {load} from 'cheerio';
 import {validate} from './json-schema-lite.mjs';
+import {articleAssetErrors, assetImage, writeArticleAssets} from './article-assets.mjs';
 
 export const ARTICLE_SCHEMA = 'nexus.article.v1';
 export const ARTICLE_FILE = /^[a-z0-9]+(?:-[a-z0-9]+)*\.json$/;
@@ -108,7 +109,9 @@ export function validateArticles(root, articles, library, schema) {
     if (staticSlugs.has(a.slug)) errors.push(`${where}: slug collides with a hand-written article (public/clanky/${a.slug}/)`);
     for (const e of bodyHtmlErrors(d.bodyHtml)) errors.push(`${where}: bodyHtml: ${e}`);
     if (d.dateModified < d.datePublished) errors.push(`${where}: dateModified is before datePublished`);
-    if (d.image && !Object.hasOwn(library, d.image.mediaId)) errors.push(`${where}: image ${d.image.mediaId} is not in the media library`);
+    for (const e of articleAssetErrors(d)) errors.push(`${where}: ${e}`);
+    if (d.image && !assetImage(d, d.image.mediaId, d.image.alt) && !Object.hasOwn(library, d.image.mediaId)) errors.push(`${where}: image ${d.image.mediaId} is not in the media library`);
+    for (const f of d.figures || []) if (!assetImage(d, f.mediaId, f.alt) && !Object.hasOwn(library, f.mediaId)) errors.push(`${where}: figure ${f.mediaId} is not in the media library`);
     if (d.cta && !safeUrl(d.cta.href)) errors.push(`${where}: cta.href must be an own page or https`);
     const seen = new Set();
     for (const [slug] of d.related) {
@@ -132,6 +135,8 @@ const footer = (site) => `<footer><div class="wrap footer"><div class="brand"><i
 /** Image of the article from the media library: {path, width, height, alt, ogPath} or null. */
 export function articleImage(root, d, library) {
   if (!d.image) return null;
+  const embedded = assetImage(d, d.image.mediaId, d.image.alt);
+  if (embedded) return embedded;
   const item = library[d.image.mediaId];
   if (!item) return null;
   // Prefer the JPEG twin for sharing (og:image); the page itself uses the library file.
@@ -141,7 +146,7 @@ export function articleImage(root, d, library) {
 }
 
 /** One complete article page (string). `site` = content/site.json, `image` = articleImage(). */
-export function renderArticlePage(d, {site, image}) {
+export function renderArticlePage(d, {site, image, library = {}}) {
   const url = `${BASE}/clanky/${d.slug}/`;
   const ogImage = BASE + (image ? image.ogPath : site.ogImage);
   const ld = {
@@ -155,6 +160,15 @@ export function renderArticlePage(d, {site, image}) {
   const related = d.related.length ? `<h2>Související články</h2><div class="related">${d.related.map(([slug, label]) => `<a href="/clanky/${slug}/">${escapeHtml(label)} →</a>`).join('')}</div>` : '';
   const note = d.aiNote ? `<p class="articleNote">${escapeHtml(d.aiNote)}</p>` : '';
   const hero = image ? `<figure class="articleVisual"><img src="${escapeHtml(image.path)}" width="${image.width}" height="${image.height}" alt="${escapeHtml(image.alt)}" decoding="async" fetchpriority="high"></figure>` : '';
+  const body = load(d.bodyHtml, null, false);
+  for (const f of [...(d.figures || [])].reverse()) {
+    const img = assetImage(d, f.mediaId, f.alt) || (library[f.mediaId] ? {...library[f.mediaId],alt:f.alt} : null);
+    if (!img) continue;
+    const figure = `<figure class="articleVisual articleFigure"><img src="${escapeHtml(img.path)}" width="${img.width}" height="${img.height}" alt="${escapeHtml(f.alt)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(f.alt)}</figcaption></figure>`;
+    const headings = body('h2');
+    const next = headings.eq(f.afterSection);
+    if (next.length) next.before(figure); else body.root().append(figure);
+  }
   const head = [
     '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">',
     `<title>${escapeHtml(d.seoTitle)}</title><meta name="description" content="${escapeHtml(d.description)}"><link rel="canonical" href="${url}">`,
@@ -167,7 +181,7 @@ export function renderArticlePage(d, {site, image}) {
     `<meta property="og:image:width" content="1200"><meta property="og:image:height" content="675"><meta property="og:image" content="${escapeHtml(ogImage)}">`,
     `<meta name="${NEXUS_MARKER}" content="${escapeHtml(`${d.nexusId}:${d.version}`)}">`,
   ].join('');
-  return `<!DOCTYPE html><html lang="cs"><head>${head}</head><body>${HEADER}<main><section class="articleHero"><div class="wrap"><div class="breadcrumbs"><a href="/">PROCELYX</a> / <a href="/clanky/">Články</a> / ${escapeHtml(d.category)}</div><div class="eyebrow">${escapeHtml(d.category)}</div><h1>${escapeHtml(d.title)}</h1><p class="lead">${escapeHtml(d.lead)}</p><div class="meta"><span>${escapeHtml(d.typeLabel)}</span><span>${czDate(d.dateModified === d.datePublished ? d.datePublished : d.dateModified)}</span><span>Redakce PROCELYX</span></div>${hero}</div></section><article class="articleBody"><div class="wrap">${d.bodyHtml}${faq}${cta}${related}${note}</div></article></main>${footer(site)}</body></html>`;
+  return `<!DOCTYPE html><html lang="cs"><head>${head}</head><body>${HEADER}<main><section class="articleHero"><div class="wrap"><div class="breadcrumbs"><a href="/">PROCELYX</a> / <a href="/clanky/">Články</a> / ${escapeHtml(d.category)}</div><div class="eyebrow">${escapeHtml(d.category)}</div><h1>${escapeHtml(d.title)}</h1><p class="lead">${escapeHtml(d.lead)}</p><div class="meta"><span>${escapeHtml(d.typeLabel)}</span><span>${czDate(d.dateModified === d.datePublished ? d.datePublished : d.dateModified)}</span><span>Redakce PROCELYX</span></div>${hero}</div></section><article class="articleBody"><div class="wrap">${body.html()}${faq}${cta}${related}${note}</div></article></main>${footer(site)}</body></html>`;
 }
 
 function card(d, image) {
@@ -207,6 +221,7 @@ export function renderArticles(root, {site, library}) {
   const articles = loadArticleFiles(root).filter((a) => a.data);
   const existing = new Set([...articles.map((a) => a.slug), ...staticArticleSlugs(root)]);
   const items = articles.map((a) => {
+    writeArticleAssets(root, a.data);
     const related = relatedFor(a.data, existing);
     if (related.length !== a.data.related.length) console.warn(`articles: ${a.file}: dropped ${a.data.related.length - related.length} related link(s) to a missing article`);
     return {slug: a.slug, data: {...a.data, related}, image: articleImage(root, a.data, library)};
@@ -222,7 +237,7 @@ export function renderArticles(root, {site, library}) {
   }
   for (const {slug, data, image} of items) {
     mkdirSync(resolve(clanky, slug), {recursive: true});
-    writeFileSync(resolve(clanky, slug, 'index.html'), renderArticlePage(data, {site, image}));
+    writeFileSync(resolve(clanky, slug, 'index.html'), renderArticlePage(data, {site, image, library}));
   }
   const index = resolve(clanky, 'index.html');
   if (existsSync(index)) writeFileSync(index, applyArticlesToIndex(readFileSync(index, 'utf8'), items));
