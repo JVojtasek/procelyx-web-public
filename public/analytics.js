@@ -30,11 +30,16 @@
       session = old && Date.now() - old.at < 1800000 && Date.now() - old.startedAt < 86400000 ? old.id : sessionId();
       sessionStorage.setItem('px-analytics-session', JSON.stringify({id: session, at: Date.now(), startedAt: old?.id === session ? old.startedAt : Date.now()}));
     } catch { session ||= sessionId(); }
-    let referrer = '';
-    try { referrer = new URL(document.referrer).origin; } catch {}
+    let referrer = '', referringDomain = '$direct';
+    try {
+      const source = new URL(document.referrer);
+      if (source.protocol === 'https:' || source.protocol === 'http:') {
+        referrer = source.origin; referringDomain = source.hostname.toLowerCase();
+      }
+    } catch {}
     const payload = {api_key: config.token, event, properties: {
       distinct_id: visitor, $session_id: session, $current_url: location.origin + path,
-      $pathname: path, $host: location.hostname, $referrer: referrer,
+      $pathname: path, $host: location.hostname, $referrer: referrer, $referring_domain: referringDomain,
       $process_person_profile: false, $geoip_disable: true, site: 'procelyx.cz', ...props,
     }};
     fetch(config.host + '/i/v0/e/', {method: 'POST', body: JSON.stringify(payload), headers: {'Content-Type': 'application/json'}, keepalive: true}).catch(() => {});

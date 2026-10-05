@@ -186,9 +186,27 @@ test('public page captures omit query strings, fragments, referrer paths, link t
     assert.equal(url,'https://eu.i.posthog.com/i/v0/e/');
     assert.equal(payload.properties.$current_url,'https://procelyx.cz/clanky/procesni-audit/');
     assert.equal(payload.properties.$referrer,'https://source.example');
+    assert.equal(payload.properties.$referring_domain,'source.example');
     assert.equal(payload.properties.$process_person_profile,false);
     assert.equal(payload.properties.$geoip_disable,true);
     assert.ok(!JSON.stringify(payload).includes(secret));
+  }
+});
+
+test('referring domains are hostname-only; direct and invalid referrers are explicit without URL paths or credentials',async()=>{
+  for(const [referrer,expectedOrigin,expectedDomain] of [
+    ['', '', '$direct'],
+    ['not a URL', '', '$direct'],
+    ['javascript:alert(1)', '', '$direct'],
+    ['https://procelyx.cz/clanky/test/?private=secret#private', 'https://procelyx.cz', 'procelyx.cz'],
+    ['https://fixture:dummy@example.com:8443/private?private=secret#private', 'https://example.com:8443', 'example.com'],
+  ]) {
+    const page=await browser({referrer,choice:{allowed:true,at:Date.now()}});
+    const properties=page.captures()[0].payload.properties;
+    assert.equal(properties.$referrer,expectedOrigin);
+    assert.equal(properties.$referring_domain,expectedDomain);
+    assert.ok(!JSON.stringify(properties).includes('private=secret'));
+    assert.ok(!JSON.stringify(properties).includes('fixture:dummy'));
   }
 });
 
