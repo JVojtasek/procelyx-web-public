@@ -26,7 +26,8 @@ for(const file of files){
    if($('meta[name="nexus-article"]').length){
      // Published from Nexus One (content/articles/*.json): the image is optional, but a shared image must exist on this site.
      assert.ok($('meta[property="og:image"]').attr('content')?.startsWith('https://procelyx.cz/images/'),`${file}: og:image`);
-     assert.ok($('.articleVisual img').length<=1,`${file}: more than one hero image`);
+     assert.ok($('.articleHero .articleVisual img').length<=1,`${file}: more than one hero image`);
+     assert.ok($('.articleBody .articleFigure img').length<=3,`${file}: more than three body images`);
    }else{
      assert.ok($('meta[property="og:image"]').attr('content')?.includes('/images/articles/'),`${file}: article image`);
      assert.equal($('.articleVisual img').length,1,`${file}: hero image`);

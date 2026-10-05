@@ -80,7 +80,7 @@ test('a changed h1 and a swapped founder photo reach the HTML and the page after
     const html = injectPage(readFileSync(join(publicDir, 'index.html'), 'utf8'), c, home, {lang: 'cs'});
     writeFileSync(join(dir, 'index.html'), html);
     writeFileSync(join(dir, 'i18n.js'), i18nJs(c.i18n));
-    for (const f of ['site-config.js', 'app.js']) writeFileSync(join(dir, f), readFileSync(join(publicDir, f)));
+    for (const f of ['site-config.js', 'app.js', 'analytics.js']) writeFileSync(join(dir, f), readFileSync(join(publicDir, f)));
     const before = load(html);
     assert.equal(before('h1').text(), 'Každá minuta se počítá.');
     assert.equal(before('[data-slot="home.founder.image"]').attr('src'), c.library[other].path);

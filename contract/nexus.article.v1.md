@@ -19,7 +19,7 @@ Schéma: `schemas/article.schema.json` (přítomnost tohoto souboru v repu je pr
 | `bodyHtml` | tělo článku, **jen povolená sada značek** (viz níže) |
 | `faq` | `[{q, a}]`, nejvýš 6; web vyrobí sekci „Časté otázky“ a JSON-LD `FAQPage` |
 | `related` | `[[slug, popisek]]`, nejvýš 6, slug ukazuje na ručně psaný nebo Nexus článek; odkaz na článek, který už neexistuje (smazaný, staženou publikaci), build **vynechá s varováním** a nic nepadá |
-| `image` | `{mediaId, alt}` z knihovny webu (`content/media-library.json`), nebo `null`; nové soubory nahrává až R1b |
+| `image` | `{mediaId, alt}` z knihovny webu (`content/media-library.json`), nebo vložené `assets`, nebo `null` |
 | `cta` | `{key, title, text, label, href}` (`href` vlastní stránka `/…` nebo `https://…`), nebo `null` |
 | `keywords`, `aiNote` | štítky a poznámka o AI (nebo `null`) |
 | `datePublished`, `dateModified` | `YYYY-MM-DD` (Europe/Prague), `dateModified >= datePublished` |
@@ -54,3 +54,13 @@ Slug nesmí kolidovat s ručně psaným článkem (`public/clanky/<slug>/` bez z
 
 Po sloučení Nexus čeká na check `Workers Builds` a stáhne `GET /clanky/<slug>/`: `<h1>` musí odpovídat titulku a
 `<meta name="nexus-article">` verzi z JSON. Při neshodě zmrazí publikaci a změnu vrátí (smaže přidaný soubor).
+
+## Schválené obrázky a infografika
+
+Volitelné `assets` a `figures` jsou zpětně kompatibilní doplnění. `schemas/article-media.schema.json` oznamuje podporu Nexusu. Obrázky jsou součástí stejného schváleného JSON jako text, žádné dodatečné stahování.
+
+- Nejvýš 4 WebP soubory; SHA256 v ID `img-nexus-` se musí shodovat s bajty; canonical base64.
+- Rozměry 800–1600 × 400–900, poměr 16:9 s tolerancí6%; 450KB na soubor, 1.5MB celkem, infografika250KB. Metadata a animace se odmítají.
+- Nejvýš3 `figures`, typ `illustration` nebo `infographic`, popisek5–300znaků, `afterSection`0–8. Nula před první H2; jinak za celou zvolenou sekcí.
+- Každý odkaz musí mít vložený soubor; duplicity a nepoužité bajty jsou chyba. Tělo HTML dál nesmí obsahovat libovolné obrázky.
+- Build materializuje soubory do `/images/nexus/<sha256>.webp` a kontroluje rozměry, alt i všechny odkazy.

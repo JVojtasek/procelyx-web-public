@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nexus.article.v1 embedded WebP media capability",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "assets": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mediaId",
+          "mime",
+          "dataBase64",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "mediaId": {
+            "type": "string",
+            "pattern": "^img-nexus-[a-f0-9]{64}$"
+          },
+          "mime": {
+            "const": "image/webp"
+          },
+          "dataBase64": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 600000,
+            "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 800,
+            "maximum": 1600
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 400,
+            "maximum": 900
+          }
+        }
+      }
+    },
+    "figures": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mediaId",
+          "kind",
+          "alt",
+          "afterSection"
+        ],
+        "properties": {
+          "mediaId": {
+            "type": "string",
+            "pattern": "^img-[a-z0-9-]{1,160}$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "illustration",
+              "infographic"
+            ]
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 300,
+            "pattern": "^[^<>]*$"
+          },
+          "afterSection": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8
+          }
+        }
+      }
+    }
+  }
+}

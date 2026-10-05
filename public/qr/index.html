@@ -8,4 +8,4 @@ closeCode.onclick=close;document.addEventListener('keydown',e=>{if(e.key==='Esca
 const share=document.getElementById('shareSite');
 if(navigator.share){share.hidden=false;share.onclick=async()=>{try{await navigator.share({title:'PROCELYX — Jaroslav Vojtášek',text:'Automatizace a digitální procesy pro firmy',url:'https://procelyx.cz/'});}catch(error){if(error.name!=='AbortError')document.getElementById('qrStatus').textContent='Odkaz můžete poslat i ručně: https://procelyx.cz/';}};}
 </script>
-</body></html>
+<script src="/analytics.js?v=8cde9cf3fab5" defer=""></script></body></html>
