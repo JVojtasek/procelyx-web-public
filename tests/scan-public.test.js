@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {scanText, maskSample, isAllowedCommitEmail} from '../scripts/scan-public.mjs';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {scanText, maskSample, isAllowedCommitEmail, isLegacyCommitEmailFinding, matchesLegacyCommitEmailFingerprint, scanCommitRecord} from '../scripts/scan-public.mjs';
 
 const scan = (file, text) => { const out = []; scanText(file, text, (f, line, rule, sample) => out.push({f, line, rule, sample})); return out; };
 const rules = (file, text) => scan(file, text).map((x) => x.rule);
@@ -60,4 +62,49 @@ test('printed findings never contain the full secret, e-mail or phone', () => {
   assert.equal(maskSample('phone', '+420 777 123 456'), '+420 77***');
   const token = 'ghp_' + 'A'.repeat(36);
   assert.ok(!maskSample('github-token', token).includes(token.slice(6)));
+});
+
+test('the historical waiver matches only its full commit SHA, author field and exact address fingerprint', () => {
+  const sha='1d912681ca6dca80fe069d22a3a6137b9e626d6e',digest='5473a5134b018d189fa88885433100658e15e944be11de01116d3d6660ce3495';
+  assert.ok(matchesLegacyCommitEmailFingerprint(sha,'author_email',digest));
+  assert.ok(!matchesLegacyCommitEmailFingerprint('0'.repeat(40),'author_email',digest));
+  assert.ok(!matchesLegacyCommitEmailFingerprint(sha.slice(0,8),'author_email',digest));
+  assert.ok(!matchesLegacyCommitEmailFingerprint(sha,'committer_email',digest));
+  assert.ok(!matchesLegacyCommitEmailFingerprint(sha,'author_email','0'.repeat(64)));
+  assert.ok(!isLegacyCommitEmailFinding(sha,'author_email','other@example.com'));
+  assert.deepEqual(rules('public/page.html','jan.novak@firma.cz'),['email']);
+  const findings=[];
+  scanCommitRecord({sha,an:'Owner',ae:'noreply@github.com',cn:'GitHub',ce:'noreply@github.com',body:'token ghp_'+'Z'.repeat(36)},(_file,_line,rule)=>findings.push(rule),()=>{});
+  assert.deepEqual(findings,['github-token']);
+});
+
+test('real historical metadata is waived without exempting new commits, committers, tree or message leaks', t => {
+  const sha='1d912681ca6dca80fe069d22a3a6137b9e626d6e';
+  // Read the immutable historical metadata; never write its address into public source or logs.
+  let email;
+  try { email=execFileSync('git',['-C',fileURLToPath(new URL('../',import.meta.url)),'show','-s','--format=%ae',sha],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim(); }
+  catch { t.skip('Historical commit is unavailable in this shallow checkout; exact fingerprint guards are tested independently. CI fetches the full history.'); return; }
+  assert.ok(isLegacyCommitEmailFinding(sha,'author_email',email));
+  assert.ok(!isAllowedCommitEmail(email),'the historical address must not become globally allowed');
+  assert.ok(!isLegacyCommitEmailFinding('0'.repeat(40),'author_email',email),'new commits still fail');
+  assert.ok(!isLegacyCommitEmailFinding(sha.slice(0,8),'author_email',email),'short commit IDs cannot match');
+  assert.ok(!isLegacyCommitEmailFinding(sha,'committer_email',email),'the committer is not waived');
+  assert.ok(!isLegacyCommitEmailFinding(sha,'author_email','other@example.com'),'a changed address is not waived');
+
+  const record={sha,an:'Historical owner',ae:email,cn:'GitHub',ce:'noreply@github.com',body:'Ordinary message'};
+  const check=(patch={})=>{
+    const findings=[],warnings=[];
+    scanCommitRecord({...record,...patch},(_file,_line,rule)=>findings.push(rule),message=>warnings.push(message));
+    return {findings,warnings};
+  };
+  const historical=check();
+  assert.deepEqual(historical.findings,[]);
+  assert.equal(historical.warnings.length,1);
+  assert.ok(!historical.warnings[0].includes(email));
+  assert.deepEqual(check({sha:'0'.repeat(40)}).findings,['commit-email']);
+  assert.deepEqual(check({ce:email}).findings,['commit-email']);
+  assert.deepEqual(check({ae:'other@example.com'}).findings,['commit-email']);
+  assert.deepEqual(check({body:'token ghp_'+'Z'.repeat(36)}).findings,['github-token']);
+  assert.deepEqual(check({body:'Contact '+email}).findings,['email']);
+  assert.deepEqual(rules('public/page.html',email),['email'],'public tree remains fully scanned');
 });
