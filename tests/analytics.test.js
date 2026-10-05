@@ -208,7 +208,7 @@ test('Worker publishes only a valid project ingestion token, never a personal ma
   }
   const response=analyticsConfig({POSTHOG_PROJECT_TOKEN:projectToken,POSTHOG_PERSONAL_API_KEY:privateKey,UNRELATED_SECRET:'private-marker'});
   const json=await response.json();
-  assert.deepEqual(json,{enabled:true,token:projectToken,host:'https://eu.i.posthog.com',projectId:206560});
+  assert.deepEqual(json,{enabled:true,token:projectToken,host:'https://eu.i.posthog.com',projectId:295120});
   assert.ok(!JSON.stringify(json).includes(privateKey));
   assert.equal(response.headers.get('X-Content-Type-Options'),'nosniff');
 });
