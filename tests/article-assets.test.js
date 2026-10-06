@@ -9,6 +9,7 @@ import {articleAssetErrors, assetPath, writeArticleAssets} from '../tools/lib/ar
 import {renderArticlePage} from '../tools/lib/articles.mjs';
 import {validate} from '../tools/lib/json-schema-lite.mjs';
 import {load} from 'cheerio';
+import {buildMediaLibrary} from '../tools/lib/site-content.mjs';
 
 const bytes = await sharp({create:{width:800,height:450,channels:3,background:'#125371'}}).webp().toBuffer();
 const asset = {mediaId:'img-nexus-'+createHash('sha256').update(bytes).digest('hex'),mime:'image/webp',dataBase64:bytes.toString('base64'),width:800,height:450};
@@ -17,7 +18,11 @@ const data = {image:{mediaId:asset.mediaId,alt:'Modelový přehled toku zakázky
 test('approved bytes survive materialization and a figure lands after the complete selected section', () => {
   assert.deepEqual(articleAssetErrors(data), []);
   const root = mkdtempSync(join(tmpdir(),'procelyx-media-'));
-  try { writeArticleAssets(root,data); assert.deepEqual(readFileSync(join(root,'public',assetPath(asset.mediaId))),bytes); }
+  try {
+    writeArticleAssets(root,data);
+    assert.deepEqual(readFileSync(join(root,'public',assetPath(asset.mediaId))),bytes);
+    assert.deepEqual(buildMediaLibrary(root), {}, 'materialized article bytes must not change the committed shared media library on the next build');
+  }
   finally { rmSync(root,{recursive:true,force:true}); }
   const html = renderArticlePage({...data,slug:'test-tok',title:'Praktický tok zakázky',seoTitle:'Praktický tok zakázky',description:'Popis modelového toku',category:'Procesy',typeLabel:'Příklad',lead:'Modelový přehled',faq:[],related:[],cta:null,aiNote:null,datePublished:'2026-10-05',dateModified:'2026-10-05',nexusId:'test1',version:1},{site:{founderName:'Veřejný autor',ogImage:'/images/example.webp',email:'info@example.com',phone:''},image:null});
   const $ = load(html);

@@ -253,9 +253,16 @@ test('release gate with a real article in the repository: build, the whole test 
 test('generated Nexus article pages are never tracked in git (build output); hand-written pages are; the tracked list page and sitemap carry no generated entries', () => {
   const r = spawnSync('git', ['ls-files', 'public/clanky'], {cwd: root, encoding: 'utf8'});
   if (r.status !== 0) return; // not a git checkout (e.g. a source archive)
+  // The build updates the working tree. Inspect the Git index, which is what a
+  // commit would contain, so a valid generated article never fails this gate.
+  const indexed = (file) => {
+    const blob = spawnSync('git', ['show', `:${file}`], {cwd: root, encoding: 'utf8'});
+    assert.equal(blob.status, 0, `cannot read indexed ${file}: ${blob.stderr}`);
+    return blob.stdout;
+  };
   for (const f of r.stdout.split(String.fromCharCode(10)).filter((x) => x.endsWith('/index.html'))) {
-    assert.doesNotMatch(readFileSync(join(root, f), 'utf8'), /name="nexus-article"/, `${f} is generated build output and must not be committed`);
+    assert.doesNotMatch(indexed(f), /name="nexus-article"/, `${f} is generated build output and must not be committed`);
   }
-  assert.doesNotMatch(readFileSync(join(root, 'public/clanky/index.html'), 'utf8'), /data-nexus-article/, 'committed list page must not contain generated cards (git restore after a local build)');
-  assert.doesNotMatch(readFileSync(join(root, 'public/sitemap.xml'), 'utf8'), /<!-- nexus -->/, 'committed sitemap must not contain generated URLs (git restore after a local build)');
+  assert.doesNotMatch(indexed('public/clanky/index.html'), /data-nexus-article/, 'committed list page must not contain generated cards (git restore after a local build)');
+  assert.doesNotMatch(indexed('public/sitemap.xml'), /<!-- nexus -->/, 'committed sitemap must not contain generated URLs (git restore after a local build)');
 });

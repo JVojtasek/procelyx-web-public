@@ -16,6 +16,9 @@ export function buildMediaLibrary(root) {
   const entries = [];
   for (const rel of readdirSync(dir, {recursive: true})) {
     const path = '/images/' + String(rel).split(/[\\/]/).join('/');
+    // Approved article bytes are derived build output, referenced by their
+    // own img-nexus SHA256 identities. They are not shared editable media.
+    if (path.startsWith('/images/nexus/')) continue;
     if (!RASTER.test(path)) continue;
     const {width, height} = imageSize(readFileSync(join(dir, String(rel))));
     entries.push([mediaIdFor(path), {path, width, height}]);
