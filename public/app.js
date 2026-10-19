@@ -45,9 +45,16 @@ document.querySelector('#export').onclick=()=>{
 // (origin + path only). Sent only together with a submitted inquiry; see privacy.html section 6.
 const leadSource=(()=>{
   const read=()=>{try{return JSON.parse(sessionStorage.getItem('pxsrc')||'null')}catch{return null}};
-  const saved=read();if(saved&&typeof saved==='object')return saved;
+  const fields=[['utm_source','utmSource'],['utm_medium','utmMedium'],['utm_campaign','utmCampaign'],['utm_content','utmContent'],['utm_term','utmTerm']];
+  const rawSaved=read(),saved={};
+  if(rawSaved&&typeof rawSaved==='object'&&!Array.isArray(rawSaved)){
+    for(const [,field] of fields){const v=typeof rawSaved[field]==='string'?rawSaved[field].trim().slice(0,200):'';if(v)saved[field]=v;}
+    try{const r=new URL(rawSaved.referrer);if(r.protocol==='https:'&&r.hostname!=='procelyx.cz'&&r.hostname!=='www.procelyx.cz')saved.referrer=(r.origin+r.pathname).slice(0,500);}catch{}
+  }
   const q=new URLSearchParams(location.search),src={};
-  for(const [param,field] of [['utm_source','utmSource'],['utm_medium','utmMedium'],['utm_campaign','utmCampaign'],['utm_content','utmContent'],['utm_term','utmTerm']]){const v=(q.get(param)||'').trim().slice(0,200);if(v)src[field]=v;}
+  for(const [param,field] of fields){const v=(q.get(param)||'').trim().slice(0,200);if(v)src[field]=v;}
+  // A direct visit has no campaign: keep first campaign, not the first empty storage object.
+  if(fields.some(([,field])=>saved[field])||!fields.some(([,field])=>src[field])&&Object.keys(saved).length)return saved;
   try{const r=new URL(document.referrer);if(r.protocol==='https:'&&r.hostname!=='procelyx.cz'&&r.hostname!=='www.procelyx.cz')src.referrer=(r.origin+r.pathname).slice(0,500);}catch{}
   try{sessionStorage.setItem('pxsrc',JSON.stringify(src))}catch{}
   return src;
