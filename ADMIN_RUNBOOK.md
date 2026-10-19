@@ -12,7 +12,7 @@
 
 ### Pokud se automatické nasazení nespustí
 
-V Cloudflare Worker → Settings → Builds ověřte repozitář `JVojtasek/procelyx-web-public`, produkční větev `procelyx-live`, kořen `/`, build `npm run build` a deploy `npx wrangler deploy`. Při hlášení odpojeného Git účtu zkontrolujte přes Manage, že instalace GitHub App „Cloudflare Workers and Pages“ má přístup právě k tomuto repozitáři. Přístup omezte na vybrané repozitáře a zachovejte již používané položky.
+V Cloudflare Worker → Settings → Builds ověřte repozitář `JVojtasek/procelyx-web-public`, produkční větev `procelyx-live`, kořen `/`, build `npm run build` a deploy `npx wrangler deploy`. V Previews Base ponechte „Builds for Preview branches“ vypnuté: tento web nemá konfiguraci náhledového prostředí. Při hlášení odpojeného Git účtu zkontrolujte přes Manage, že instalace GitHub App „Cloudflare Workers and Pages“ má přístup právě k tomuto repozitáři. Přístup omezte na vybrané repozitáře a zachovejte již používané položky.
 
 Po obnovení propojení nemusí být starší push zopakován automaticky. Použijte nový schválený PR do produkční větve nebo oprávněné spuštění Workers Builds pro konkrétní aktuální commit. Neopakujte historický build jiného repozitáře. Ověřte úspěšný build, commit nasazení i skutečné veřejné soubory; zelené GitHub kontroly samy o sobě nepotvrzují živé nasazení. Produkční deploy nadále prochází testy a kontrolou odkazů podle `CLAUDE.md`.
 
