@@ -20,7 +20,7 @@
 // (validate-content, build, check) in a child process without the workflow token or Actions variables.
 // validate-content is mandatory once content/manifest.json exists (W0c); before that it runs when present.
 import {spawnSync} from 'node:child_process';
-import {existsSync, mkdirSync, mkdtempSync, cpSync, rmSync, writeFileSync, appendFileSync} from 'node:fs';
+import {existsSync, mkdirSync, mkdtempSync, cpSync, rmSync, writeFileSync, appendFileSync, realpathSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname, join, resolve, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -181,7 +181,10 @@ export function toolEnv(env = process.env) {
 }
 
 export function runBaseTool(workspace, args) {
-  const r = spawnSync(process.execPath, args, {cwd: workspace, env: toolEnv(), encoding: 'utf8', timeout: 5 * 60 * 1000});
+  // Node resolves the module's real path. Match argv[1] to it as well, including Windows junctions,
+  // so a CLI main guard cannot silently skip validation while exiting with code 0.
+  const entry = realpathSync(resolve(workspace, args[0]));
+  const r = spawnSync(process.execPath, [entry, ...args.slice(1)], {cwd: workspace, env: toolEnv(), encoding: 'utf8', timeout: 5 * 60 * 1000});
   return {ok: r.status === 0, output: `${r.stdout || ''}${r.stderr || ''}`.trim().split('\n').slice(-15).join('\n')};
 }
 
