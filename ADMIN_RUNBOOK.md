@@ -2,13 +2,19 @@
 
 ## Kde co je
 
-- GitHub: `JVojtasek/procelyx-web-public`, produkční větev `procelyx-live` (kořen repozitáře = web). Do přepojení Cloudflare Workers Builds na tento repozitář se produkce nasazuje z původního privátního repozitáře (viz CLAUDE.md, sekce Nasazení).
+- GitHub: `JVojtasek/procelyx-web-public`, produkční větev `procelyx-live` (kořen repozitáře = web). Cloudflare Workers Builds je propojený s tímto repozitářem; původní repozitář není zdrojem současného webu.
 - Cloudflare Worker procelyx-web, doména https://procelyx.cz; www přesměruje na hlavní doménu.
 - Formulář: Cloudflare → Google Apps Script / MailApp → jarda.vojtasek@procelyx.cz v Google Workspace. Původní jarda@procelyx.cz a info@procelyx.cz jsou aliasy téže schránky. Resend je zachovaný pro řízené záložní přepnutí.
 - Rezervace: odkaz v kontaktní sekci vede na soukromý typ schůzky „Úvodní konzultace PROCELYX“ v Microsoft Bookings. Trvá 60 minut, online přes Teams, úterý až pátek 13:00–15:00, nejdříve za 1 den a nejvýše 30 dní dopředu. Dostupnost se řídí pracovním kalendářem Outlook; pozvánky i údaje o rezervaci zpracovává prostředí Microsoft 365 organizace ARKANCE. Odkaz i podmínky zpracování změňte, pokud se schůzky přesunou do samostatného účtu PROCELYX.
 - Pravidla repozitáře (CODEOWNERS, ruleset, `content-guard`) popisuje `CLAUDE.md`. Ruleset zatím neplatí (čeká na A1: veřejné repo nebo GitHub Pro) a podepisování commitů na A6; pořadí kroků a stav je v `CLAUDE.md`, oddíl „Stav hranice“. Do té doby neinstalovat GitHub App Nexusu do tohoto repa.
 
 ## Změny obsahu
+
+### Pokud se automatické nasazení nespustí
+
+V Cloudflare Worker → Settings → Builds ověřte repozitář `JVojtasek/procelyx-web-public`, produkční větev `procelyx-live`, kořen `/`, build `npm run build` a deploy `npx wrangler deploy`. Při hlášení odpojeného Git účtu zkontrolujte přes Manage, že instalace GitHub App „Cloudflare Workers and Pages“ má přístup právě k tomuto repozitáři. Přístup omezte na vybrané repozitáře a zachovejte již používané položky.
+
+Po obnovení propojení nemusí být starší push zopakován automaticky. Použijte nový schválený PR do produkční větve nebo oprávněné spuštění Workers Builds pro konkrétní aktuální commit. Neopakujte historický build jiného repozitáře. Ověřte úspěšný build, commit nasazení i skutečné veřejné soubory; zelené GitHub kontroly samy o sobě nepotvrzují živé nasazení. Produkční deploy nadále prochází testy a kontrolou odkazů podle `CLAUDE.md`.
 
 Obsah úvodní stránky je jako data v `content/` (kontrakt `contract/nexus.site.v1.md`):
 
